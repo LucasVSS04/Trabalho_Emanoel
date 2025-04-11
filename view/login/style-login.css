@@ -95,3 +95,23 @@ h2 {
 .login-btn:hover {
     background: linear-gradient(to right, #00d18c, #00b47f);
 }
+
+.register-option {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-option p {
+    font-size: 14px;
+    color: #333;
+}
+
+.register-link {
+    color: #00d09c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}

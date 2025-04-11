@@ -14,38 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   registerBtn.addEventListener('click', function() {
-      // Preparar para o registro
-      AppLogic.prepareRegistration();
-      // Redirecionar para a página de registro (quando criada)
-      console.log('Redirecionando para a página de registro...');
-      // window.location.href = 'register/register.html';
-      
-      // Por enquanto, ainda estamos usando o exemplo simulado
-      const username = prompt('Digite seu nome:');
-      const email = prompt('Digite seu email:');
-      const password = prompt('Digite sua senha:');
-      
-      if (username && email && password) {
-          AppLogic.registerUser({
-              username: username,
-              email: email,
-              password: password,
-              tipo: 'comum'
-          }).then(result => {
-              if (result.success) {
-                  console.log('Registro bem-sucedido:', result.userData);
-                  alert('Conta criada com sucesso!');
-                  // Redirecionar para a página de login após registro bem-sucedido
-                  window.location.href = 'login/login.html';
-              } else {
-                  console.error('Falha no registro:', result.message);
-                  alert('Falha no registro: ' + result.message);
-              }
-          }).catch(error => {
-              console.error('Erro durante o registro:', error);
-              alert('Ocorreu um erro ao tentar criar a conta');
-          });
-      }
+        // Redirecionar para a página de cadastro    
+        window.location.href = 'cadastro/cadastro.html';
+
   });
   
   // Window control buttons
