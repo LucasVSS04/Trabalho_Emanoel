@@ -1,31 +1,17 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #ecfff2;
     font-family: 'Inter', sans-serif;
+    background-color: #e6fff0;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
 .container {
     text-align: center;
-}
-
-h2 {
-    color: #0a3d3e;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.login-box {
-    background-color: #e6ffe6;
-    border: 1px solid #ccc;
-    padding: 30px 40px;
-    border-radius: 4px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    width: 350px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
 }
 
 .input-group {
@@ -33,85 +19,68 @@ h2 {
     text-align: left;
 }
 
-.input-group label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    display: block;
-    color: #0a3d3e;
-}
-
 .input-row {
     display: flex;
     align-items: center;
-    position: relative;
-}
-
-.icon-fixed {
-    width: 26px;
-    height: 26px;
-    margin-right: 12px;
-}
-
-.input-row input {
-    flex: 1;
-    padding: 10px 40px 10px 15px;
-    border-radius: 20px;
     border: 1px solid #ccc;
-    outline: none;
-    font-size: 14px;
+    border-radius: 20px;
+    padding: 8px 12px;
     background-color: white;
 }
 
-.eye-icon {
-    position: absolute;
-    right: 12px;
-    font-size: 18px; /* ou ajuste como quiser */
-    color: #093030; /* cor do ícone */
-    cursor: pointer;
+.input-row input {
+    border: none;
+    flex: 1;
+    padding: 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: transparent;
 }
 
-.forgot {
-    display: block;
-    text-align: center;
-    font-size: 13px;
-    color: #00c58e;
-    text-decoration: none;
-    margin-bottom: 20px;
+.icon-fixed {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.eye-icon {
+    cursor: pointer;
 }
 
 .login-btn {
-    background: linear-gradient(to right, #00e69d, #00c58e);
-    border: none;
-    padding: 12px 25px;
-    font-size: 18px;
-    color: #000;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
     width: 100%;
-    transition: background 0.3s ease;
+    max-width: 450px;
+    padding: 12px 0;
+    background-color: #00c986;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
 }
 
-.login-btn:hover {
-    background: linear-gradient(to right, #00d18c, #00b47f);
+.forgot {
+    color: #00c7a1;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.forgot, .register-link {
+    display: block;
+    margin-top: 10px;
+    color: #00c986;
+    text-decoration: none;
+}
+.register-link:hover{
+    text-decoration: underline;
 }
 
 .register-option {
-    text-align: center;
     margin-top: 15px;
-}
-
-.register-option p {
-    font-size: 14px;
-    color: #333;
-}
-
-.register-link {
-    color: #00d09c;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.register-link:hover {
-    text-decoration: underline;
 }
