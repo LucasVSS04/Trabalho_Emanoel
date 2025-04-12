@@ -1,77 +1,148 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Cofre - Cadastro</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="cadastro.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Cofre - Cadastro</title>
+
+  <!-- Font Awesome para os ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Seus estilos -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="cadastro.css">
+
+  <style>
+    .header-bar {
+      display: none;
+    }
+
+    .container {
+      box-shadow: none;
+      border: none;
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .cadastro-form {
+      max-width: 800px;
+      margin: auto;
+      padding: 0 15px;
+    }
+
+    #data-formatada {
+      font-size: 0.9em;
+      color: #333;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .eye-icon {
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .input-container {
+      position: relative;
+    }
+  </style>
 </head>
 <body>
-    <div class="container cadastro-container">
-        <div class="header-bar">
-            <div class="back-button">&#8592;</div>
-            <div class="window-controls">
-                <span class="minimize">&#8212;</span>
-                <span class="maximize">&#9744;</span>
-                <span class="close">&#10005;</span>
-            </div>
-        </div>
-        
-        <h1 class="cadastro-title">Criação De Conta</h1>
-        
-        <div class="cadastro-form">
-            <div class="input-group">
-                <label for="nome">Nome Completo</label>
-                <div class="input-container">
-                    <input type="text" id="nome" name="nome" class="form-input">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="email">E-Mail</label>
-                <div class="input-container">
-                    <input type="email" id="email" name="email" class="form-input">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="telefone">Número De Telefone</label>
-                <div class="input-container">
-                    <input type="tel" id="telefone" name="telefone" class="form-input">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="nascimento">Data De Nascimento</label>
-                <div class="input-container">
-                    <input type="text" id="nascimento" name="nascimento" placeholder="DD / MM / YYYY" class="form-input">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="senha">Senha</label>
-                <div class="input-container">
-                    <input type="password" id="senha" name="senha" class="form-input">
-                    <div class="toggle-password" id="toggle-senha">&#128065;</div>
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="confirmar-senha">Confirmar Senha</label>
-                <div class="input-container">
-                    <input type="password" id="confirmar-senha" name="confirmar-senha" class="form-input">
-                    <div class="toggle-password" id="toggle-confirmar-senha">&#128065;</div>
-                </div>
-            </div>
-            
-            <button class="confirmar-btn" id="confirmar-btn">Confirmar</button>
-        </div>
-    </div>
+  <div class="container cadastro-container">
+    <h1 class="cadastro-title">Criação De Conta</h1>
 
-    <!-- Scripts -->
-    <script src="../../data/js/data-service.js"></script>
-    <script src="../../business/js/app-logic.js"></script>
-    <script src="cadastro.js"></script>
+    <div class="cadastro-form">
+      <div class="input-group">
+        <label for="nome">Nome Completo</label>
+        <div class="input-container">
+          <input type="text" id="nome" name="nome" class="form-input">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="email">E-Mail</label>
+        <div class="input-container">
+          <input type="email" id="email" name="email" class="form-input">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="telefone">Número De Telefone</label>
+        <div class="input-container">
+          <input type="tel" id="telefone" name="telefone" class="form-input">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="nascimento">Data De Nascimento</label>
+        <div class="input-container">
+          <input type="date" id="nascimento" name="nascimento" class="form-input">
+        </div>
+        <span id="data-formatada"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <div class="input-container">
+          <input type="password" id="senha" name="senha" class="form-input">
+          <i class="fas fa-eye eye-icon" id="toggle-senha"></i>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmar-senha">Confirmar Senha</label>
+        <div class="input-container">
+          <input type="password" id="confirmar-senha" name="confirmar-senha" class="form-input">
+          <i class="fas fa-eye eye-icon" id="toggle-confirmar-senha"></i>
+        </div>
+      </div>
+
+      <button class="confirmar-btn" id="confirmar-btn">Confirmar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Formatar data de nascimento
+      const nascimento = document.getElementById('nascimento');
+      const dataFormatada = document.getElementById('data-formatada');
+
+      nascimento.addEventListener('change', function () {
+        const data = new Date(this.value);
+        if (!isNaN(data)) {
+          const dia = String(data.getDate()).padStart(2, '0');
+          const mes = String(data.getMonth() + 1).padStart(2, '0');
+          const ano = data.getFullYear();
+          dataFormatada.textContent = '';
+        }
+      });
+
+      // Mostrar/ocultar senha
+      const senhaInput = document.getElementById('senha');
+      const eyeSenha = document.getElementById('toggle-senha');
+
+      eyeSenha.addEventListener("click", function () {
+        const type = senhaInput.type === "password" ? "text" : "password";
+        senhaInput.type = type;
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+      });
+
+      // Mostrar/ocultar confirmar senha
+      const confirmarSenhaInput = document.getElementById('confirmar-senha');
+      const eyeConfirmar = document.getElementById('toggle-confirmar-senha');
+
+      eyeConfirmar.addEventListener("click", function () {
+        const type = confirmarSenhaInput.type === "password" ? "text" : "password";
+        confirmarSenhaInput.type = type;
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+      });
+    });
+  </script>
 </body>
 </html>
