@@ -1,7 +1,7 @@
 // Controlador da UI para mostrar/ocultar senha
 document.addEventListener('DOMContentLoaded', function () {
-    const passwordInput = document.getElementById('password');
-    const eyeIcon = document.querySelector('.eye-icon');
+    const passwordInput = document.getElementById('nova-senha'); // ID corrigido
+    const eyeIcon = document.getElementById('toggleSenha'); // ID correto do ícone do olho
 
     if (eyeIcon && passwordInput) {
         eyeIcon.addEventListener("click", function () {
@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordInput.type = type;
 
             // Alternar os ícones (fa-eye ↔ fa-eye-slash)
-            this.classList.toggle("fa-eye");
-            this.classList.toggle("fa-eye-slash");
+            eyeIcon.classList.toggle("fa-eye");
+            eyeIcon.classList.toggle("fa-eye-slash");
         });
     }
 });
-

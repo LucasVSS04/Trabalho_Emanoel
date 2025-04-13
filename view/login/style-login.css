@@ -59,6 +59,7 @@ body {
     cursor: pointer;
     margin: 20px auto;
     display: block;
+    text-decoration: none;
 }
 
 .forgot {
