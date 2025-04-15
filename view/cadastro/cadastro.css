@@ -129,10 +129,12 @@ body {
     cursor: pointer;
     margin: 20px auto;
     display: block;
+    text-decoration: none;
 }
 
 .confirmar-btn:hover {
     background-color: #00b388;
+    text-decoration: none;
 }
 
 /* Estiliza o ícone do calendário para ser clicável */
