@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('nova-senha'); // ID corrigido
     const eyeIcon = document.getElementById('toggleSenha'); // ID correto do ícone do olho
+    const confirmarBtn = document.getElementById('confirmar-btn');
+    const reenviarBtn = document.getElementById('reenviar-btn');
 
     if (eyeIcon && passwordInput) {
         eyeIcon.addEventListener("click", function () {
@@ -13,4 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
             eyeIcon.classList.toggle("fa-eye-slash");
         });
     }
+
+    confirmarBtn.addEventListener('click', function () {
+        // Redirecionar para a página de login
+        window.location.href = '/src/views/login/login.html';
+    })
+
+    reenviarBtn.addEventListener('click', function () {
+        // Atualiza a página atual
+        window.location.href = '/src/views/recuperacao-senha/recuperacao-senha.html';
+    })
 });

@@ -20,7 +20,7 @@
             <div class="input-group">
                 <label for="username">Nome Do Usuário</label>
                 <div class="input-row">
-                    <img src="User.png" class="icon-fixed" alt="Usuário">
+                    <img src="/src/assets/User.png" class="icon-fixed" alt="Usuário">
                     <input type="text" id="username" placeholder="Nome do Usuário">
                 </div>
             </div>
@@ -28,22 +28,22 @@
             <div class="input-group">
                 <label for="password">Senha</label>
                 <div class="input-row">
-                    <img src="Lock.png" class="icon-fixed" alt="Cadeado">
+                    <img src="/src/assets/Lock.png" class="icon-fixed" alt="Cadeado">
                     <input type="password" id="password" placeholder="Senha">
                     <i class="fas fa-eye eye-icon" id="togglePassword"></i>
                 </div>
             </div>
 
-            <a href="/view/recuperacao-senha/recuperacao-senha.html" class="forgot">Esqueci Minha Senha</a>
+            <a href="#" class="forgot" id="forgot-btn">Esqueci Minha Senha</a>
 
-            <a href="/view/pin/confirmacao-pin.html" class="login-btn">Log In</a>
+            <a class="login-btn" id="login-bton">Log In</a>
             
             <div class="register-option">
-                <p>Não tem uma conta? <a href="/view/cadastro/cadastro.html" class="register-link" id="voltar-inicio">Cadastrar</a></p>
+                <p>Não tem uma conta? <a href="#" class="register-link" id="register-btn">Cadastrar</a></p>
             </div>
         </form>
     </div>
 
-    <script src="login.js"></script>
+    <script src="/src/controllers/login-controller.js"></script>
 </body>
 </html>

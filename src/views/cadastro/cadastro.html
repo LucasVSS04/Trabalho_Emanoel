@@ -11,44 +11,6 @@
   <!-- Seus estilos -->
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="cadastro.css">
-
-  <style>
-    .header-bar {
-      display: none;
-    }
-
-    .container {
-      box-shadow: none;
-      border: none;
-      max-width: 100%;
-      padding: 20px;
-    }
-
-    .cadastro-form {
-      max-width: 800px;
-      margin: auto;
-      padding: 0 15px;
-    }
-
-    #data-formatada {
-      font-size: 0.9em;
-      color: #333;
-      margin-top: 5px;
-      display: block;
-    }
-
-    .eye-icon {
-      position: absolute;
-      right: 12px;
-      cursor: pointer;
-      color: #666;
-      font-size: 16px;
-    }
-
-    .input-container {
-      position: relative;
-    }
-  </style>
 </head>
 <body>
   <div class="container cadastro-container">
@@ -100,49 +62,17 @@
         </div>
       </div>
 
-      <a href="/view/login/login.html" class="confirmar-btn" id="confirmar-btn">Confirmar</a>
+      <!-- Botão ajustado e alinhado -->
+      <div class="input-group">
+        <label></label>
+        <div class="input-container">
+          <a  class="confirmar-btn" id="confirmar-btn">Confirmar</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Scripts -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Formatar data de nascimento
-      const nascimento = document.getElementById('nascimento');
-      const dataFormatada = document.getElementById('data-formatada');
-
-      nascimento.addEventListener('change', function () {
-        const data = new Date(this.value);
-        if (!isNaN(data)) {
-          const dia = String(data.getDate()).padStart(2, '0');
-          const mes = String(data.getMonth() + 1).padStart(2, '0');
-          const ano = data.getFullYear();
-          dataFormatada.textContent = '';
-        }
-      });
-
-      // Mostrar/ocultar senha
-      const senhaInput = document.getElementById('senha');
-      const eyeSenha = document.getElementById('toggle-senha');
-
-      eyeSenha.addEventListener("click", function () {
-        const type = senhaInput.type === "password" ? "text" : "password";
-        senhaInput.type = type;
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-      });
-
-      // Mostrar/ocultar confirmar senha
-      const confirmarSenhaInput = document.getElementById('confirmar-senha');
-      const eyeConfirmar = document.getElementById('toggle-confirmar-senha');
-
-      eyeConfirmar.addEventListener("click", function () {
-        const type = confirmarSenhaInput.type === "password" ? "text" : "password";
-        confirmarSenhaInput.type = type;
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-      });
-    });
-  </script>
+  <script src="/src/controllers/cadastro-controller.js"></script>
 </body>
 </html>

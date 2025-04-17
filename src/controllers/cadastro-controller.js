@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Alternar visibilidade da senha
     const toggleSenha = document.getElementById('toggle-senha');
     const senhaInput = document.getElementById('senha');
+    const confirmarBtn = document.getElementById('confirmar-btn');
 
     toggleSenha.addEventListener('click', function () {
         const tipo = senhaInput.type === 'password' ? 'text' : 'password';
@@ -37,4 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
             dataFormatada.textContent = '';
         }
     });
+    confirmarBtn.addEventListener('click', function () {
+        // Redirecionar para a página de login
+        window.location.href = '/src/views/login/login.html';
+    });
+
 });

@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Painel Financeiro</title>
-    <link rel="stylesheet" href="style_mes.css">
+    <link rel="stylesheet" href="style_dia.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="icone-sino" onclick="window.location.href='/view/notificacao/notificacao.html'">
-            <i class="fas fa-bell"></i>
+            <div class="icone-sino" id="notificacao">
+            <i class="fas fa-bell "></i>
             <span class="notificacao">1</span>
         </div>
             <div class="user-info">
@@ -58,13 +58,11 @@
             <div class="espaco"></div>
 
             <div class="filtros">
-                <button onclick="window.location.href='/view/home_dia/tela_dashboard_dia.html'">
-                    Dia
-                  </button>
-                  <button onclick="window.location.href='/view/home_semana/tela_dashboard_semana.html'">
-                    Semana
-                  </button>
-                <button class="ativo">Mês</button>
+                <button href ="#" class="ativo" data-periodo = "dia">Dia</button>
+                <button href ="#"  class="botao" data-periodo = "semana">Semana</button>
+                <button href ="#"  class="botao" data-periodo = "mes">Mês</button>
+         
+               
             </div>
 
             <ul class="transacoes">
@@ -72,7 +70,7 @@
                     <i class="fas fa-wallet"></i>
                     <div>
                         <strong>Salário</strong>
-                        <p>18:27 - 30 De Abril</p>
+                        <p>18:27 - 20:31 </p>
                     </div>
                     <span class="positivo">R$4.000,00</span>
                 </li>
@@ -80,7 +78,7 @@
                     <i class="fas fa-store"></i>
                     <div>
                         <strong>Mercado</strong>
-                        <p>17:00 - 14 De Abril</p>
+                        <p>17:00 - 22:00</p>
                     </div>
                     <span class="negativo">-R$100,00</span>
                 </li>
@@ -88,7 +86,7 @@
                     <i class="fas fa-home"></i>
                     <div>
                         <strong>Aluguel</strong>
-                        <p>8:30 - 15 De Abril</p>
+                        <p>8:30 - 11:45</p>
                     </div>
                     <span class="negativo">-R$674,40</span>
                 </li>
@@ -96,6 +94,7 @@
             
         </main>
     </div>
+    <script src="/src/controllers/home-controller.js"></script>
 </body>
 
 </html>

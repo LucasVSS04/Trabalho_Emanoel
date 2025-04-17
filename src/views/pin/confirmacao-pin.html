@@ -11,16 +11,17 @@
     <div class="container">
         <h2>Entre Com O Pin De Segurança</h2>
 
-        <form action="/view/home_mes/tela_dashboard_mes.html" method="get">
             <label for="pin" class="label-pin">Pin Enviado</label>
             <div class="input-row">
                 <i class="fas fa-key icon-fixed"></i>
                 <input type="text" id="pin" placeholder="Digite o PIN">
             </div>
 
-            <button type="submit" class="confirm-btn">Confirmar</button>
-            <button type="button" class="resend-btn">Enviar Novamente</button>
-        </form>
+            <button type="submit" class="confirm-btn" id="confirmar-btn">Confirmar</button>
+            <button type="button" class="resend-btn" id="reenviar-btn">Enviar Novamente</button>
+       
     </div>
+
+    <script src="/src/controllers/pin-controller.js"></script>
 </body>
 </html>

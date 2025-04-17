@@ -79,40 +79,47 @@ input[type="password"] {
     cursor: pointer;
 }
 
-.confirmar-btn,
-.confirmar-final-btn {
+/* Botões no estilo do print usando <a> */
+a.confirmar-btn,
+a.confirmar-final-btn {
+    display: inline-block;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #00d09c;
-    color: #000;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 15px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.confirmar-btn:hover,
-.confirmar-final-btn:hover {
-    background-color: #00b388;
+a.confirmar-btn:hover,
+a.confirmar-final-btn:hover {
+    background-color: #00b98a;
 }
 
-.reenviar-btn {
+a.reenviar-btn {
+    display: inline-block;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #fff;
     color: #000;
+    text-align: center;
+    text-decoration: none;
     border: 1px solid #000;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.reenviar-btn:hover {
+a.reenviar-btn:hover {
     background-color: #f5f5f5;
 }
 
