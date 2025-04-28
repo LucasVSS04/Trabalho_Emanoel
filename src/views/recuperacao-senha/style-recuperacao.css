@@ -128,3 +128,54 @@ a.reenviar-btn:hover {
     border-top: 1px solid #eee;
     padding-top: 30px;
 }
+
+@media (max-width: 480px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  
+    .recovery-box {
+      padding: 20px;
+    }
+  
+    .info-text p {
+      font-size: 14px;
+    }
+  
+    .input-row {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px;
+      border-radius: 12px;
+    }
+  
+    .icon-fixed {
+      margin: 0 0 10px 0;
+      align-self: center;
+    }
+  
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .eye-icon {
+      margin-top: 10px;
+      margin-right: 0;
+      align-self: center;
+    }
+  
+    a.confirmar-btn,
+    a.confirmar-final-btn,
+    a.reenviar-btn {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+  

@@ -1,0 +1,287 @@
+/* Base styles */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary: #0a4640;
+  --primary-light: #e8fff1;
+  --primary-accent: #17c99b;
+  --button-bg: #ffffff;
+  --button-text: #333333;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --form-bg: #e3f9ed;
+  --input-border: #cce6df;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.profile-header {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.window-controls button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Main Content */
+.profile-container {
+  max-width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Profile Image */
+.profile-image-container {
+  margin: 20px 0;
+  position: relative;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--primary-accent);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* User Info */
+.user-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.user-id {
+  font-size: 14px;
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+/* Profile Form */
+.profile-form {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.form-input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--form-bg);
+  font-size: 16px;
+  color: var(--primary);
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: #8eb7a9;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(23, 201, 155, 0.3);
+}
+
+/* Update Button */
+.update-button {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 30px;
+  background-color: var(--primary-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.update-button:hover {
+  background-color: #14b58a;
+  transform: translateY(-2px);
+}
+
+.update-button:active {
+  transform: translateY(0);
+}
+
+/* Toast Notifications */
+.toast-notification {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-in;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .camera-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .update-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

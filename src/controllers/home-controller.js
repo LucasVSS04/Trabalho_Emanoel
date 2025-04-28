@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const notification = document.getElementById('notificacao');
+    
     const goToDashboard = (periodo) => {
         switch (periodo) {
             case 'dia':
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'mes':
                 window.location.href = '/src//views/home/mes/tela_dashboard_mes.html';
                 break;
+                
             default:
                 console.error('Período não reconhecido!');
         }
@@ -31,4 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/src/views/notificacao/notificacao.html';
     });
 
+    const userBtn = document.getElementById('user');
+    
+    // Verifica se o botão existe
+    if (!userBtn) {
+        console.error('Botão de usuário não encontrado!');
+        return;
+    }
+
+    // Adiciona o event listener para o botão de usuário
+    userBtn.addEventListener('click', function(e) {
+        window.location.href = '/src/views/user/user.html';
+    });
+
+
 });
+

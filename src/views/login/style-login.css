@@ -85,3 +85,41 @@ body {
 .register-option {
     margin-top: 15px;
 }
+
+@media (max-width: 480px) {
+    body {
+      padding: 20px;
+      height: auto;
+    }
+  
+    .container {
+      padding: 15px;
+    }
+  
+    .input-row {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+    }
+  
+    .icon-fixed {
+      margin-bottom: 8px;
+      margin-right: 0;
+    }
+  
+    .input-row input {
+      width: 100%;
+      padding: 6px 8px;
+    }
+  
+    .login-btn {
+      font-size: 14px;
+      padding: 10px 0;
+    }
+  
+    .forgot,
+    .register-link {
+      font-size: 14px;
+    }
+  }
+  

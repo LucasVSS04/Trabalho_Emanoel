@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const reenviarBtn = document.getElementById('reenviar-btn');
 
     confirmarBtn.addEventListener('click', function () {
-        
-        window.location.href = '/src/views/home/dia/tela_dashboard_dia.html';
+
+        window.location.href = '/src/views/home/mes/tela_dashboard_mes.html';
     });
 
     reenviarBtn.addEventListener('click', function () {
-        
+
         window.location.href = '/src/views/pin/confirmacao-pin.html';
     });
 
-  
+
 });

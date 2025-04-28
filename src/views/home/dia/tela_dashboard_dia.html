@@ -1,100 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Painel Financeiro</title>
-    <link rel="stylesheet" href="style_dia.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="style_dia.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        display: none;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <aside class="sidebar">
-            <div class="icone-sino" id="notificacao">
-            <i class="fas fa-bell "></i>
-            <span class="notificacao">1</span>
+      <aside class="sidebar">
+        <div class="user-info">
+          <div class="icone-sino" id="notificacao">
+            <i class="fas fa-bell"></i>
+          </div>
+          <p><strong>Oi, </strong><br />Boa Tarde</p>
         </div>
-            <div class="user-info">
-                <p><strong>Oi, </strong><br>Boa Tarde</p>
-            </div>
-            <nav class="menu">
-                <button class="active"><i class="fas fa-home"></i> Início</button>
-                <button><i class="fas fa-exchange-alt"></i> Transações</button>
-                <button><i class="fas fa-user"></i> Usuário</button>
-                <button><i class="fas fa-chart-line"></i> Análise</button>
-            </nav>
-        </aside>
+        <nav class="menu">
+          <button class="active" id="home">
+            <i class="fas fa-home"></i> Início
+          </button>
+          <button id="transation">
+            <i class="fas fa-exchange-alt"></i> Transações
+          </button>
+          <button id="user"><i class="fas fa-user"></i> Usuário</button>
+          <button id="anallise">
+            <i class="fas fa-chart-line"></i> Análise
+          </button>
+        </nav>
+      </aside>
 
-        <main class="main-content">
-            <div class="saldo-boxes">
-                <div class="saldo">
-                    <p>Saldo Total</p>
-                    <h2>R$7.783,00</h2>
-                </div>
-                <div class="despesas">
-                    <p>Despesas Totais</p>
-                    <h2>-R$1.187,40</h2>
-                </div>
-            </div>
-            
-            <div class="box box-resumo">
-                <div class="metas-info">
-                    <p class="titulo-metas">Metas</p>
-                    <i class="fas fa-car icon"></i>
-                </div>
-                <div class="texto-resumo">
-                    <div class="receita">
-                        <p>Receita Semana Passada</p>
-                        <strong class="positivo">R$4.000,00</strong>
-                    </div>
-                    <div class="comida">
-                        <p>Comida da semana passada</p>
-                        <strong class="negativo">-R$100,00</strong>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="espaco"></div>
+      <main class="main-content">
+        <div class="saldo-boxes">
+          <div class="saldo">
+            <p>Saldo Total</p>
+            <h2>R$7.783,00</h2>
+          </div>
+          <div class="despesas">
+            <p>Despesas Totais</p>
+            <h2>-R$1.187,40</h2>
+          </div>
+        </div>
 
-            <div class="filtros">
-                <button href ="#" class="ativo" data-periodo = "dia">Dia</button>
-                <button href ="#"  class="botao" data-periodo = "semana">Semana</button>
-                <button href ="#"  class="botao" data-periodo = "mes">Mês</button>
-         
-               
+        <div class="box box-resumo">
+          <div class="metas-info">
+            <p class="titulo-metas">Metas</p>
+            <i class="fas fa-car icon"></i>
+          </div>
+          <div class="texto-resumo">
+            <div class="receita">
+              <p>Receita Semana Passada</p>
+              <strong class="positivo">R$4.000,00</strong>
             </div>
+            <div class="comida">
+              <p>Comida da semana passada</p>
+              <strong class="negativo">-R$100,00</strong>
+            </div>
+          </div>
+        </div>
 
-            <ul class="transacoes">
-                <li class="transacao">
-                    <i class="fas fa-wallet"></i>
-                    <div>
-                        <strong>Salário</strong>
-                        <p>18:27 - 20:31 </p>
-                    </div>
-                    <span class="positivo">R$4.000,00</span>
-                </li>
-                <li class="transacao">
-                    <i class="fas fa-store"></i>
-                    <div>
-                        <strong>Mercado</strong>
-                        <p>17:00 - 22:00</p>
-                    </div>
-                    <span class="negativo">-R$100,00</span>
-                </li>
-                <li class="transacao">
-                    <i class="fas fa-home"></i>
-                    <div>
-                        <strong>Aluguel</strong>
-                        <p>8:30 - 11:45</p>
-                    </div>
-                    <span class="negativo">-R$674,40</span>
-                </li>
-            </ul>
-            
-        </main>
+        <div class="espaco"></div>
+
+        <div class="filtros">
+          <button href="#" class="ativo" data-periodo="dia">Dia</button>
+          <button href="#" class="botao" data-periodo="semana">Semana</button>
+          <button href="#" class="botao" data-periodo="mes">Mês</button>
+        </div>
+
+        <ul class="transacoes">
+          <li class="transacao">
+            <i class="fas fa-wallet"></i>
+            <div>
+              <strong>Salário</strong>
+              <p>18:27 - 20:31</p>
+            </div>
+            <span class="positivo">R$4.000,00</span>
+          </li>
+          <li class="transacao">
+            <i class="fas fa-store"></i>
+            <div>
+              <strong>Mercado</strong>
+              <p>17:00 - 22:00</p>
+            </div>
+            <span class="negativo">-R$100,00</span>
+          </li>
+          <li class="transacao">
+            <i class="fas fa-home"></i>
+            <div>
+              <strong>Aluguel</strong>
+              <p>8:30 - 11:45</p>
+            </div>
+            <span class="negativo">-R$674,40</span>
+          </li>
+        </ul>
+      </main>
     </div>
     <script src="/src/controllers/home-controller.js"></script>
-</body>
+    <script>
+      function parseJwt(token) {
+        try {
+          const base64Url = token.split(".")[1];
+          const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+          const jsonPayload = decodeURIComponent(
+            atob(base64)
+              .split("")
+              .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+              .join("")
+          );
+          return JSON.parse(jsonPayload);
+        } catch (e) {
+          return null;
+        }
+      }
 
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = sessionStorage.getItem("token"); // ou localStorage
+        if (!token) {
+          window.location.href = "/src/views/login/login.html"; // Redireciona para a página de login
+          return;
+        }
+        const payload = parseJwt(token);
+
+        const nome = payload?.nome || "Usuário";
+        const userInfo = document.querySelector(".user-info p");
+
+        if (userInfo) {
+          userInfo.innerHTML = `<strong>Oi, ${nome}</strong><br>Boa Tarde`;
+        }
+        document.body.style.display = "block";
+      });
+    </script>
+  </body>
 </html>
