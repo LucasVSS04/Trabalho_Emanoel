@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/src/views/user/user.html';
     });
 
+    // Adicionar o event listener para o botão de transações
+    const transactionBtn = document.getElementById('transaction');
+    if (transactionBtn) {
+        transactionBtn.addEventListener('click', function() {
+            window.location.href = '/src/views/transacao/transacao.html';
+        });
+    }
 
 });
 

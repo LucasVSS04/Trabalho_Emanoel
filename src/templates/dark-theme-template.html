@@ -1,0 +1,33 @@
+<!-- 
+TEMPLATE PARA ADICIONAR SUPORTE AO TEMA ESCURO
+Adicione estas linhas ao <head> de todas as suas páginas HTML
+-->
+
+<!-- Carregue o gerenciador de tema escuro o mais cedo possível -->
+<script src="/src/scripts/theme-manager.js"></script>
+
+<!-- Adicione o CSS do tema escuro -->
+<link rel="stylesheet" href="/src/styles/dark-theme.css">
+
+<!-- Adicione a classe dark ao elemento HTML condicionalmente via JavaScript -->
+<script>
+  // Aplica o tema escuro imediatamente se necessário (evita flash de tema claro)
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.documentElement.classList.add('dark');
+  }
+</script>
+
+<!-- Adicione o sincronizador de tema entre páginas (opcional mas recomendado) -->
+<script src="/src/scripts/page-theme-sync.js" defer></script>
+
+<!-- 
+INSTRUÇÕES DE USO:
+1. Copie as linhas acima para o <head> de todas as suas páginas HTML
+2. Adicione as classes dark:bg-... e dark:text-... aos seus elementos HTML
+   Exemplo: <div class="bg-white dark:bg-gray-800 text-black dark:text-white"></div>
+3. Use /src/styles/dark-theme.css para personalizar os estilos do tema escuro
+
+PARA APLICAR AUTOMATICAMENTE EM TODAS AS PÁGINAS:
+1. Execute o script src/scripts/apply-dark-theme.js com Node.js:
+   node src/scripts/apply-dark-theme.js
+--> 

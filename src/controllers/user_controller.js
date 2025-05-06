@@ -4,16 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoutBtn = document.getElementById("logout-btn");
   const notificationBtn = document.getElementById("notification-btn");
   const configBtn = document.getElementById("config-btn");
+  const securityBtn = document.getElementById("security-btn");
   const editProfileCard = document.querySelector(".option-card:nth-child(1)"); // First option card is Edit Profile
-
-  const token = sessionStorage.getItem("token");
-
-  if (!token) {
-    console.error("Usuário não autenticado");
-    // Redirecionar para a página de login se não houver token
-    window.location.href = "/src/views/login/login.html";
-    return;
-  }
 
   document.body.style.display = "block";
 
@@ -112,6 +104,19 @@ document.addEventListener("DOMContentLoaded", function () {
           );
         } else {
           window.location.href = "/src/views/editarPerfil/editPerf.html";
+        }
+      });
+    }
+
+    if (securityBtn) {
+      securityBtn.addEventListener("click", () => {
+        if (window.pageTransitions) {
+          window.pageTransitions.navigateTo(
+            "/src/views/security/security.html",
+            "slide-right"
+          );
+        } else {
+          window.location.href = "/src/views/security/security.html";
         }
       });
     }

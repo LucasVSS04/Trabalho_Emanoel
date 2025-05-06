@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transações</title>
+    <link rel="stylesheet" href="transacao.css">
+</head>
+
+<body>
+    <nav class="side-nav">
+        <a href="../home/dia/tela_dashboard_dia.html" class="nav-item">
+            <img src="../assets/home-icon.png" alt="">
+            <span>Início</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <img src="../assets/transaction-icon.png" alt="">
+            <span>Transações</span>
+        </a>
+        <a href="../user/user.html" class="nav-item">
+            <img src="../assets/user-icon.png" alt="">
+            <span>Usuário</span>
+        </a>
+        <a href="#" class="nav-item">
+            <img src="../assets/analysis-icon.png" alt="">
+            <span>Análise</span>
+        </a>
+    </nav>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content">
+                <a href="../home/dia/tela_dashboard_dia.html" class="back-arrow">←</a>
+                <h1>Transações</h1>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="balance-container">
+                <div class="user-info">
+                    <span class="user-name">Oi, Gabriel</span>
+                </div>
+
+                <div class="balance-header">
+                    <div class="balance-item">
+                        <img src="../assets/check-icon.png" alt="">
+                        <span class="balance-label">Saldo total</span>
+                        <span class="balance-value" id="saldo-total">R$0,00</span>
+                    </div>
+                    <div class="balance-item">
+                        <img src="../assets/expense-icon.png" alt="">
+                        <span class="balance-label">Despesas totais</span>
+                        <span class="balance-value negative" id="despesas-totais">-R$0,00</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 38.915%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-percentage">38.915%</span>
+                        <span class="progress-limit">R$20.000,00</span>
+                    </div>
+                </div>
+
+                <div class="total-balance">
+                    <div class="total-box">
+                        <span>Balanço Total</span>
+                        <strong id="balanco-total">R$0,00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions-list" id="transactions-list">
+                <!-- Transações serão inseridas aqui dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <a href="criarTransacao.html" class="add-transaction">+</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("DOM carregado");
+    
+            // Requisição para pegar os dados do usuário autenticado
+            fetch('http://localhost:3000/api/me', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${document.cookie}`, // Apenas se o token fosse acessível via JavaScript
+                },
+                credentials: 'include', // Garante que os cookies sejam enviados automaticamente
+            })
+            .then(response => response.json())
+            .then(usuarioLogado => {
+                if (usuarioLogado.error) {
+                    console.error('Erro ao obter os dados do usuário:', usuarioLogado.error);
+                    return;
+                }
+    
+                const nomeUsuario = usuarioLogado.nome;
+    
+                // Atualizar o nome na interface
+                if (nomeUsuario) {
+                    document.querySelector('.user-name').textContent = `Oi, ${nomeUsuario}`;
+                }
+    
+                const usuarioId = usuarioLogado.id; // ID do usuário logado
+    
+                // Buscar transações e calcular os valores
+                fetch(`http://localhost:3000/api/transacoes/${usuarioId}`, {
+                    method: 'GET',
+                    credentials: 'include',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Erro ao carregar as transações:', data.error);
+                        return;
+                    }
+    
+                    const { transacoes, saldoTotal, despesasTotais, balancoTotal } = data;
+    
+                    // Atualizar os valores no frontend
+                    const saldoTotalFormatted = (typeof saldoTotal === 'number' ? saldoTotal : 0).toFixed(2);
+                    const despesasTotaisFormatted = (typeof despesasTotais === 'number' ? Math.abs(despesasTotais) : 0).toFixed(2);
+                    const balancoTotalFormatted = (typeof balancoTotal === 'number' ? balancoTotal : 0).toFixed(2);
+    
+                    // Atualizar os valores no frontend
+                    document.getElementById('saldo-total').textContent = `R$${saldoTotalFormatted}`;
+                    document.getElementById('despesas-totais').textContent = `-R$${despesasTotaisFormatted}`;
+                    document.getElementById('balanco-total').textContent = `R$${balancoTotalFormatted}`;
+    
+                    // Listar transações
+                    const transactionsList = document.getElementById('transactions-list');
+                    transactionsList.innerHTML = ''; // Limpar a lista antes de adicionar novas transações
+    
+                    transacoes.forEach(transacao => {
+                        const transactionItem = document.createElement('div');
+                        transactionItem.classList.add('transaction-item');
+    
+                        // Definir o tipo da transação (positiva ou negativa)
+                        const transactionValueClass = transacao.valor < 0 ? 'negative' : 'positive';
+    
+                        transactionItem.innerHTML = `
+                            <div class="transaction-icon ${transacao.categoria}">
+                                <img src="../../assets/icons/${transacao.categoria}-icon.png" alt="${transacao.categoria}">
+                            </div>
+                            <div class="transaction-info">
+                                <div class="transaction-title">${transacao.categoria}</div>
+                                <div class="transaction-date">${new Date(transacao.data).toLocaleDateString()}</div>
+                            </div>
+                            <div class="transaction-value ${transactionValueClass}">R$${transacao.valor.toFixed(2)}</div>
+                        `;
+                        transactionsList.appendChild(transactionItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar as transações:', error);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao obter os dados do usuário:', error);
+            });
+        });
+    </script>
+    
+
+</body>
+
+</html>

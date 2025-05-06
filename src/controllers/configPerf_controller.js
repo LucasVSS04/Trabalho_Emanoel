@@ -36,9 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
       updateNotificationIcons();
     }
 
-    // O tema escuro já foi inicializado pelo theme-manager.js
-    // Garantir que o ícone e status estejam atualizados
+    // Verificar se o tema escuro está ativo no localStorage e atualizar o toggle
     if (darkModeToggle) {
+      // Definir o estado inicial do toggle com base no localStorage
+      const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+      darkModeToggle.checked = isDarkMode;
       updateDarkModeIcons();
     }
   }
@@ -105,8 +107,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (darkModeToggle) {
     darkModeToggle.addEventListener("change", function () {
-      // Usa o gerenciador de tema para aplicar em todas as páginas
-      window.themeManager.toggleDarkMode(this.checked);
+      // Implementação direta do modo escuro
+      if (this.checked) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+      
+      // Se o gerenciador de tema estiver disponível, use-o também
+      if (window.themeManager) {
+        window.themeManager.toggleDarkMode(this.checked);
+      }
+      
       updateDarkModeIcons();
       showToast(`Tema escuro ${this.checked ? "ativado" : "desativado"}`);
     });

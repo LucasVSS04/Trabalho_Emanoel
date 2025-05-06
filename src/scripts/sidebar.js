@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Aplicar tema escuro se estiver ativado
+    applyDarkModeIfEnabled();
+    
     // Função para obter o cumprimento baseado na hora
     function getCumprimento() {
         const hora = new Date().getHours();
@@ -58,8 +61,94 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-analise')?.addEventListener('click', () => {
         window.location.href = '/src/views/analise/analise.html';
     });
+    
+    // Inicializar tema escuro
+    initDarkModeSupport();
 
     // Inicialização
     atualizarInfoUsuario();
     marcarBotaoAtivo();
-}); 
+});
+
+// Função para aplicar tema escuro se estiver ativado
+function applyDarkModeIfEnabled() {
+    // Verificar se o tema escuro está ativado no localStorage
+    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+    if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+}
+
+// Função para inicializar suporte ao tema escuro
+function initDarkModeSupport() {
+    // Verificar se o gerenciador de tema existe
+    if (!window.themeManager) {
+        // Criar gerenciador simples se não existir
+        window.themeManager = {
+            toggleDarkMode: function(enable) {
+                if (enable) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            },
+            isDarkMode: function() {
+                return localStorage.getItem('darkMode') === 'enabled';
+            }
+        };
+    }
+    
+    // Procurar por toggle de tema escuro na página atual
+    const darkModeToggle = document.getElementById('darkmode-toggle');
+    if (darkModeToggle) {
+        // Definir estado inicial do toggle
+        darkModeToggle.checked = window.themeManager.isDarkMode();
+        
+        // Adicionar evento de change para o toggle
+        darkModeToggle.addEventListener('change', function() {
+            window.themeManager.toggleDarkMode(this.checked);
+            updateDarkModeStatus();
+        });
+        
+        // Atualizar ícones e texto
+        updateDarkModeStatus();
+    }
+}
+
+// Função para atualizar ícones e texto do tema escuro
+function updateDarkModeStatus() {
+    const isDark = window.themeManager.isDarkMode();
+    const icon = document.getElementById('darkmode-icon');
+    const status = document.getElementById('darkmode-status');
+    
+    if (icon) {
+        if (isDark) {
+            icon.className = "fas fa-moon text-purple-600 dark:text-purple-400";
+        } else {
+            icon.className = "fas fa-sun text-amber-500";
+        }
+    }
+    
+    if (status) {
+        status.textContent = isDark ? "Ativado" : "Desativado";
+        status.className = isDark 
+            ? "text-sm font-medium text-green-600 dark:text-green-400" 
+            : "text-sm font-medium text-gray-600 dark:text-gray-300";
+    }
+}
+
+// Função para decodificar JWT
+function parseJwt(token) {
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        return JSON.parse(atob(base64));
+    } catch (e) {
+        console.error('Erro ao decodificar token:', e);
+        return null;
+    }
+} 

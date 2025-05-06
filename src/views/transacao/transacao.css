@@ -1,0 +1,406 @@
+:root {
+    --primary-color: #00D37F;
+    --negative-color: #FF4B4B;
+    --background-color: #1A1A1A;
+    --card-background: #242424;
+    --text-color: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Side Navigation */
+.side-nav {
+    width: 200px;
+    background-color: #242424;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    background-color: #00D37F;
+    opacity: 1;
+}
+
+.nav-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item span {
+    font-size: 16px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 200px;
+    background-color: white;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    display: none;
+}
+
+/* User Section */
+.user-section {
+    background-color: white;
+    padding: 20px 0;
+}
+
+.user-info {
+    margin-bottom: 15px;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.user-type {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-left: 5px;
+}
+
+/* Balance Section */
+.balance-container {
+    margin-top: 0;
+    background-color: #00D37F;
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.balance-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.balance-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.balance-label {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.balance-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.balance-value.negative {
+    color: #FF4B4B;
+}
+
+.progress-container {
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+.progress {
+    height: 100%;
+    background-color: white;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px;
+}
+
+.progress-percentage, .progress-limit {
+    font-size: 12px;
+    color: #333;
+    background-color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.total-balance {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.total-box {
+    background-color: white;
+    padding: 15px 40px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #333;
+}
+
+/* Transactions Section */
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 15px;
+}
+
+.transaction-item {
+    background-color: #E0E0E0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.transaction-icon {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.transaction-icon img {
+    width: 100%
+}
+
+.transaction-info {
+    flex: 1;
+    color: #333;
+}
+
+.transaction-title {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.transaction-date {
+    color: #666;
+    font-size: 13px;
+}
+
+.transaction-value {
+    font-size: 15px;
+    min-width: 90px;
+}
+
+.transaction-value.positive {
+    color: #00D37F;
+}
+
+.transaction-value.negative {
+    color: #FF4B4B;
+}
+
+/* Add Transaction Button */
+.add-transaction {
+    position: fixed;
+    bottom: 60px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #00D37F;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 211, 127, 0.3);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adicione isto ao seu CSS */
+.icon {
+    width: 24px;
+    height: 24px;
+    /* Para mudar a cor do SVG */
+    filter: brightness(0) invert(1); /* Isso fará o ícone ficar branco */
+}
+
+/* Se quiser cores diferentes para diferentes tipos de ícones */
+.transaction-item.salary .icon {
+    filter: brightness(0) invert(0.7) sepia(1) hue-rotate(95deg) saturate(1000%); /* Verde */
+}
+
+.transaction-item.expense .icon {
+    filter: brightness(0) invert(0.5) sepia(1) hue-rotate(0deg) saturate(1000%); /* Vermelho */
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+}
+
+.back-button,
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-button:hover,
+.profile-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.back-button .icon,
+.profile-button .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #F5F5F5;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 8px;
+    color: #333;
+}
+
+.modal-header {
+    background-color: #006B3F;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.transaction-form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.save-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00D37F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background-color: #00b36b;
+}
+
+.modal-close {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}

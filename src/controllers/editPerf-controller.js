@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/usuarios/${userData.id}`,
+        `http://localhost:3000/api/usuarios/${userData.id}/change-password`,
         {
           method: "PATCH",
           headers: {

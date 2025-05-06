@@ -270,3 +270,31 @@ h1 {
         font-size: 12px;
     }
 }
+
+.menu-option .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.menu-option i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #ccc;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+}
+
+.menu-link:hover {
+    background-color: rgba(0, 211, 127, 0.1);
+}
+
+.menu-link:hover i {
+    color: #00cc88;
+}

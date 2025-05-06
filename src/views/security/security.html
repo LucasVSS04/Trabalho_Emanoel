@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança - E-Cofre</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style-security.css">
+    
+    <!-- Scripts globais -->
+    <script src="/src/utils/theme-manager.js"></script>
+    <script src="/src/utils/page-transitions.js"></script>
+</head>
+<body>
+    <div id="webcrumbs">
+        <div class="bg-[#0a342e] text-white p-3 flex items-center justify-center relative">
+            <button id="back-btn" class="absolute left-4 hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </button>
+            <h1 class="text-2xl font-bold">Segurança</h1>
+        </div>
+
+        <div class="bg-[#f2fcf9] min-h-screen p-6">
+            <!-- Conteúdo Principal -->
+            <main class="max-w-xl mx-auto">
+                <!-- Opções de Segurança -->
+                <div class="space-y-6 mt-12">
+                    <!-- Trocar Senha -->
+                    <button id="change-password" class="w-full flex items-center justify-between p-4 rounded-xl hover:bg-[#e0f7f1] transition-colors duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="icon-container bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-key text-blue-600"></i>
+                            </div>
+                            <span class="text-lg font-medium text-[#173e3a]">Trocar Senha</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#173e3a]">chevron_right</span>
+                    </button>
+
+                    <!-- Termos e Condições -->
+                    <button id="terms-conditions" class="w-full flex items-center justify-between p-4 rounded-xl hover:bg-[#e0f7f1] transition-colors duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="icon-container bg-purple-100 rounded-full w-10 h-10 flex items-center justify-center">
+                                <i class="fas fa-file-contract text-purple-600"></i>
+                            </div>
+                            <span class="text-lg font-medium text-[#173e3a]">Termos E Condições</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#173e3a]">chevron_right</span>
+                    </button>
+                </div>
+            </main>
+
+            <!-- Rodapé -->
+            <footer class="mt-20 text-center text-sm text-gray-500">
+                <p>E-Cofre v1.0.0 © 2023</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal para alteração de senha -->
+    <div class="modal" id="password-modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-[#173e3a]">Trocar Senha</h3>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="password-form">
+                <div class="form-group mb-4">
+                    <label for="current-password" class="block mb-2 text-sm font-medium text-[#173e3a]">Senha Atual</label>
+                    <div class="password-container relative">
+                        <input type="password" id="current-password" class="w-full p-3 border border-gray-300 rounded-lg text-[#173e3a]" required>
+                        <i class="toggle-password fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="new-password" class="block mb-2 text-sm font-medium text-[#173e3a]">Nova Senha</label>
+                    <div class="password-container relative">
+                        <input type="password" id="new-password" class="w-full p-3 border border-gray-300 rounded-lg text-[#173e3a]" required>
+                        <i class="toggle-password fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label for="confirm-password" class="block mb-2 text-sm font-medium text-[#173e3a]">Confirmar Nova Senha</label>
+                    <div class="password-container relative">
+                        <input type="password" id="confirm-password" class="w-full p-3 border border-gray-300 rounded-lg text-[#173e3a]" required>
+                        <i class="toggle-password fas fa-eye absolute right-3 top-3 text-gray-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn w-full py-3 bg-[#17c99b] text-white font-medium rounded-lg hover:bg-[#15b68c] transition-colors">
+                    <i class="fas fa-save mr-2"></i> Salvar Alterações
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Termos e Condições -->
+    <div class="modal" id="terms-modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-[#173e3a]">Termos e Condições</h3>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="terms-content mb-6 p-4 bg-gray-50 rounded-lg max-h-72 overflow-y-auto">
+                <h3 class="font-bold mb-4 text-center text-[#173e3a]">TERMOS E CONDIÇÕES DE USO</h3>
+                
+                <h4 class="font-bold mb-2 text-[#173e3a]">1. Introdução</h4>
+                <p class="mb-4 text-[#173e3a]">
+                    Bem-vindo ao E-Cofre! Este documento estabelece os termos e condições para o uso do nosso sistema 
+                    de controle financeiro. Ao acessar e utilizar nosso serviço, você concorda com os termos aqui descritos.
+                </p>
+                
+                <h4 class="font-bold mb-2 text-[#173e3a]">2. Definições</h4>
+                <p class="mb-4 text-[#173e3a]">
+                    <strong>Usuário:</strong> Qualquer pessoa que utilize a plataforma.<br>
+                    <strong>Serviço:</strong> O sistema de controle financeiro oferecido.<br>
+                    <strong>Dados Pessoais:</strong> Informações fornecidas pelo usuário para utilização do serviço.
+                </p>
+                
+                <h4 class="font-bold mb-2 text-[#173e3a]">3. Cadastro e Acesso</h4>
+                <p class="mb-4 text-[#173e3a]">
+                    O usuário deve fornecer informações verdadeiras e atualizadas para criar uma conta.<br>
+                    A conta é pessoal e intransferível.<br>
+                    O usuário é responsável por manter suas credenciais seguras.
+                </p>
+                
+                <h4 class="font-bold mb-2 text-[#173e3a]">4. Uso do Serviço</h4>
+                <p class="mb-4 text-[#173e3a]">
+                    O sistema é destinado apenas para gestão financeira pessoal ou empresarial.<br>
+                    O usuário concorda em não utilizar o serviço para atividades ilegais.<br>
+                    O provedor do serviço pode modificar, suspender ou descontinuar funcionalidades a qualquer momento.
+                </p>
+                
+                <h4 class="font-bold mb-2 text-[#173e3a]">5. Privacidade e Proteção de Dados</h4>
+                <p class="mb-4 text-[#173e3a]">
+                    Os dados fornecidos são protegidos conforme a legislação vigente.<br>
+                    O usuário consente com a coleta e processamento de seus dados para a operação do serviço.
+                </p>
+            </div>
+            <button class="accept-btn w-full py-3 bg-[#17c99b] text-white font-medium rounded-lg hover:bg-[#15b68c] transition-colors">
+                Aceitar
+            </button>
+        </div>
+    </div>
+
+    <script src="/src/controllers/security-controller.js"></script>
+</body>
+</html> 

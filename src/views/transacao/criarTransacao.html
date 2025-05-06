@@ -1,0 +1,221 @@
+n
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação De Transação</title>
+    <link rel="stylesheet" href="criarTransacao.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../transacao/transacao.html" class="back-arrow">←</a>
+            <span class="title">Criação De Transação</span>
+            <div class="window-controls">
+                <span>−</span>
+                <span>□</span>
+                <span>×</span>
+            </div>
+        </div>
+
+        <form class="transaction-form" id="transactionForm">
+            <div class="form-group">
+                <label for="valor">Valor</label>
+                <input type="number" id="valor" name="valor" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <div class="category-container">
+                    <button type="button" class="category-dropdown" id="categoryDropdown">
+                        Selecione uma categoria <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="category-options" id="categoryOptions">
+                        <div class="category-option" data-value="compras">Compras</div>
+                        <div class="category-option" data-value="farmacia">Farmácia</div>
+                        <div class="category-option" data-value="mercado">Mercado</div>
+                        <div class="category-option" data-value="aluguel">Aluguel</div>
+                        <div class="category-option" data-value="transporte">Transporte</div>
+                        <div class="category-option" data-value="salario">Salário</div>
+                    </div>
+                    <input type="hidden" id="categoria" name="categoria" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="text" id="data" name="data" placeholder="DD/MM/YYYY" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="horario">Horário</label>
+                <input type="text" id="horario" name="horario" placeholder="HH:MM" maxlength="5" required>
+            </div>
+
+            <button type="submit" class="save-button">Salvar</button>
+        </form>
+    </div>
+
+    <script>
+        // Dropdown para Categorias
+        const categoryDropdown = document.getElementById('categoryDropdown');
+        const categoryOptions = document.getElementById('categoryOptions');
+        const categoriaInput = document.getElementById('categoria');
+
+        categoryDropdown.addEventListener('click', function () {
+            categoryOptions.classList.toggle('show');
+        });
+
+        // Fecha o dropdown quando clica fora dele
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.category-container')) {
+                categoryOptions.classList.remove('show');
+            }
+        });
+
+        // Seleciona a categoria ao clicar
+        const options = document.querySelectorAll('.category-option');
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+                categoriaInput.value = value;
+                categoryDropdown.innerHTML = text + ' <span class="dropdown-arrow">▼</span>';
+                categoryOptions.classList.remove('show');
+            });
+        });
+
+        // Formatação do campo de data
+        document.getElementById('data').addEventListener('input', function (e) {
+            let input = e.target;
+            let value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+            let formattedValue = '';
+
+            // Adiciona as barras automaticamente
+            if (value.length > 0) {
+                formattedValue = value.substring(0, 2);
+
+                if (value.length > 2) {
+                    formattedValue += '/' + value.substring(2, 4);
+
+                    if (value.length > 4) {
+                        formattedValue += '/' + value.substring(4, 8);
+                    }
+                }
+            }
+
+            input.value = formattedValue;
+        });
+
+        // Verifica e limita o tamanho do campo data
+        document.getElementById('data').addEventListener('keydown', function (e) {
+            const input = e.target;
+            if (input.value.length >= 10 &&
+                !(e.key === 'Backspace' || e.key === 'Delete' || e.key === 'ArrowLeft' ||
+                    e.key === 'ArrowRight' || e.key === 'Tab' || e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+            }
+        });
+
+        // Formatação e validação do campo de horário
+        document.getElementById('horario').addEventListener('input', function (e) {
+            let input = e.target;
+            let value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+            let formattedValue = '';
+
+            // Adiciona os dois pontos automaticamente
+            if (value.length > 0) {
+                // Limita o primeiro dígito da hora a 0-2
+                if (value.charAt(0) > '2') {
+                    value = '0' + value.substring(0, value.length - 1);
+                }
+
+                // Se começar com 2, limita o segundo dígito a 0-3 (para não passar de 23 horas)
+                if (value.charAt(0) === '2' && value.charAt(1) > '3') {
+                    value = '2' + '3' + value.substring(2);
+                }
+
+                formattedValue = value.substring(0, 2);
+
+                if (value.length > 2) {
+                    // Limita o primeiro dígito dos minutos a 0-5
+                    if (value.charAt(2) > '5') {
+                        value = value.substring(0, 2) + '0' + value.substring(3);
+                    }
+
+                    formattedValue += ':' + value.substring(2, 4);
+                }
+            }
+
+            input.value = formattedValue;
+        });
+
+        // Verifica e limita o tamanho do campo horário
+        document.getElementById('horario').addEventListener('keydown', function (e) {
+            const input = e.target;
+            if (input.value.length >= 5 &&
+                !(e.key === 'Backspace' || e.key === 'Delete' || e.key === 'ArrowLeft' ||
+                    e.key === 'ArrowRight' || e.key === 'Tab' || e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+            }
+        });
+
+        document.getElementById('transactionForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+
+            // Validação adicional
+            const categoria = document.getElementById('categoria').value;
+            if (!categoria) {
+                alert('Por favor, selecione uma categoria.');
+                return;
+            }
+
+            // Coleta os dados do formulário
+            const valor = document.getElementById('valor').value;
+            const data = document.getElementById('data').value;
+            const descricao = document.getElementById('descricao').value;
+
+            if (!valor || !data || !descricao || !categoria) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/transacoes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        valor,
+                        data,
+                        descricao,
+                        categoria,
+                    }),
+                    credentials:"include"
+                });
+
+                const result = await response.json();
+
+                if (response.status === 201) {
+                    window.location.href = '../transacao/transacao.html';
+                } else {
+                    alert('Erro ao salvar a transação: ' + result.erro);
+                }
+            } catch (error) {
+                console.error('Erro ao enviar os dados:', error);
+                alert('Erro ao salvar a transação.');
+            }
+        });
+    </script>
+</body>
+
+</html>
