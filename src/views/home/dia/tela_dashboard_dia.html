@@ -22,17 +22,22 @@
           <div class="icone-sino" id="notificacao">
             <i class="fas fa-bell"></i>
           </div>
-          <p><strong>Oi, </strong><br />Boa Tarde</p>
+          <p><strong id="nomeUsuario">Usuário</strong><br />Boa Tarde</p>
         </div>
         <nav class="menu">
-          <button class="active" id="home">
+          <button
+            class="nav-button"
+            onclick="window.location.href='tela_dashboard_dia.html'"
+          >
             <i class="fas fa-home"></i> Início
           </button>
           <button id="transaction">
             <i class="fas fa-exchange-alt"></i> Transações
           </button>
-          <button id="user"><i class="fas fa-user"></i> Usuário</button>
-          <button id="anallise">
+          <button class="nav-button" id="btn-usuario">
+            <i class="fas fa-user"></i> Usuário
+          </button>
+          <button class="nav-button" id="btn-analise">
             <i class="fas fa-chart-line"></i> Análise
           </button>
         </nav>
@@ -79,7 +84,14 @@
       </main>
     </div>
     <script src="../../../controllers/home-controller.js"></script>
+    <script src="/src/scripts/sidebar.js"></script>
     <script>
+      const transactionBtn = document.getElementById("transaction");
+      if (transactionBtn) {
+        transactionBtn.addEventListener("click", function () {
+          window.location.href = "/src/views/Transacao/Transacao.html";
+        });
+      }
       document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM carregado");
 
@@ -243,6 +255,24 @@
           .catch((error) => {
             console.error("Erro ao obter os dados do usuário:", error);
             window.location.href = "/src/views/login/login.html";
+          });
+
+        const btnAnalise = document.getElementById("btn-analise");
+        if (btnAnalise) {
+          if (window.location.pathname.includes("analise.html")) {
+            btnAnalise.disabled = true;
+            btnAnalise.style.cursor = "default";
+          } else {
+            btnAnalise.addEventListener("click", () => {
+              window.location.href = "/src/views/analise/analise.html";
+            });
+          }
+        }
+
+        document
+          .getElementById("btn-usuario")
+          ?.addEventListener("click", () => {
+            window.location.href = "/src/views/user/user.html";
           });
       });
     </script>

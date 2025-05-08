@@ -47,18 +47,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Adiciona eventos de clique nos botões
     document.getElementById('btn-inicio')?.addEventListener('click', () => {
-        window.location.href = '/src/views/home/home.html';
+        if (window.location.pathname.includes('/src/views/home')) {
+            return;
+        }
+        window.location.href = '/src/views/home/dia/tela_dashboard_dia.html';
     });
 
     document.getElementById('btn-transacoes')?.addEventListener('click', () => {
-        window.location.href = '/src/views/transacoes/transacoes.html';
+        if (window.location.pathname.includes('/src/views/transacao/transacao.html')) {
+            return;
+        }
+        window.location.href = '/src/views/transacao/transacao.html';
     });
 
     document.getElementById('btn-usuario')?.addEventListener('click', () => {
-        window.location.href = '/src/views/usuario/usuario.html';
+        if (window.location.pathname.includes('/src/views/user/user.html')) {
+            return;
+        }
+        window.location.href = '/src/views/user/user.html';
     });
 
     document.getElementById('btn-analise')?.addEventListener('click', () => {
+        if (window.location.pathname.includes('/src/views/analise/analise.html')) {
+            return;
+        }
         window.location.href = '/src/views/analise/analise.html';
     });
     
