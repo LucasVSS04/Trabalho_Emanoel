@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - E-Cofre</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style-config.css">
+    <!-- Carrega o gerenciador de tema antes de qualquer outro script -->
+
+
+    <!-- Scripts globais -->
+    <script src="/src/scripts/theme-manager.js"></script>
+
+</head>
+<body>
+    <div id="webcrumbs">
+        <div class="bg-[#0a342e] text-white p-3 flex items-center justify-center relative">
+            <button id="back-btn" class="absolute left-4 hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </button>
+            <h1 class="text-2xl font-bold">Configurações</h1>
+        </div>
+
+        <div class="bg-[#f2fcf9] min-h-screen p-6 dark:bg-gray-900 dark:text-white">
+            <!-- Conteúdo Principal -->
+            <main class="max-w-xl mx-auto">
+                <!-- Seção de Conta -->
+                <div class="mb-12 mt-12">
+                    <button id="delete-account-btn" class="w-full flex items-center justify-between p-4 rounded-xl hover:bg-[#e0f7f1] dark:hover:bg-gray-800 transition-colors duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-[#17c99b] rounded-full p-2 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white">person</span>
+                            </div>
+                            <span class="text-lg font-medium text-[#173e3a] dark:text-white">Deletar Conta</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#173e3a] dark:text-white">chevron_right</span>
+                    </button>
+                </div>
+
+                <!-- Configurações -->
+                <div class="space-y-6">
+                    <!-- Notificações -->
+                    <div class="flex items-center justify-between py-3 px-4 rounded-xl hover:bg-[#e0f7f1] dark:hover:bg-gray-800 transition-colors duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="icon-container bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center dark:bg-blue-900">
+                                <i id="notifications-icon" class="fas fa-bell text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <span class="text-lg font-medium text-[#173e3a] dark:text-white">Receber Notificações</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="notifications-status" class="text-sm font-medium text-green-600 dark:text-green-400">Ativado</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input id="notifications-toggle" type="checkbox" class="sr-only peer" checked>
+                                <div class="w-12 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#17c99b]"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tema Escuro -->
+                    <div class="flex items-center justify-between py-3 px-4 rounded-xl hover:bg-[#e0f7f1] dark:hover:bg-gray-800 transition-colors duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="icon-container bg-purple-100 rounded-full w-10 h-10 flex items-center justify-center dark:bg-purple-900">
+                                <i id="darkmode-icon" class="fas fa-moon text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <span class="text-lg font-medium text-[#173e3a] dark:text-white">Ativar Tema Escuro</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="darkmode-status" class="text-sm font-medium text-gray-600 dark:text-gray-300">Desativado</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input id="darkmode-toggle" type="checkbox" class="sr-only peer">
+                                <div class="w-12 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#17c99b]"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Rodapé -->
+            <footer class="mt-20 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>E-Cofre v1.0.0 © 2023</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../../controllers/configPerf_controller.js"></script>
+</body>
+</html>

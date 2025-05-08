@@ -1,0 +1,775 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+/* Base styles */
+*,
+:after,
+:before {
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+:after,
+:before {
+    --tw-content: "";
+}
+
+:host,
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-family: Open Sans, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    line-height: inherit;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+    min-height: 100vh;
+}
+
+/* Container */
+#webcrumbs .container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+#webcrumbs .sidebar {
+    width: 220px;
+    background-color: #1f1f1f;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+}
+
+#webcrumbs .user-info {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 16px;
+    position: relative;
+    padding-right: 45px;
+}
+
+#webcrumbs .icone-sino {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#webcrumbs .icone-sino:hover {
+    color: #00cc88;
+}
+
+#webcrumbs .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#webcrumbs .sidebar button {
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    color: #ccc;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+#webcrumbs .sidebar button:hover,
+#webcrumbs .sidebar .active {
+    background-color: #00cc88;
+    color: #fff;
+}
+
+/* Main Content */
+#webcrumbs .main-content-with-sidebar {
+    flex: 1;
+    margin-left: 220px;
+    padding: 20px;
+    background-color: #e6fff2;
+}
+
+/* Balance Section */
+#webcrumbs .bg-emerald-400 {
+    background-color: #34d399;
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+}
+
+#webcrumbs .bg-teal-800 {
+    background-color: #115e59;
+}
+
+#webcrumbs .bg-teal-900 {
+    background-color: #134e4a;
+}
+
+#webcrumbs .bg-teal-50 {
+    background-color: #f0fdfa;
+}
+
+/* Cards */
+#webcrumbs .bg-white.bg-opacity-15 {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#webcrumbs .rounded-xl {
+    border-radius: 12px;
+}
+
+#webcrumbs .rounded-2xl {
+    border-radius: 16px;
+}
+
+#webcrumbs .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Transaction Items */
+#webcrumbs .transaction-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#webcrumbs .transaction-icon {
+    width: 46px;
+    height: 46px;
+    background-color: #00cc88;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    color: white;
+    font-size: 18px;
+}
+
+#webcrumbs .transaction-info {
+    flex: 1;
+}
+
+#webcrumbs .transaction-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+#webcrumbs .transaction-date {
+    font-size: 13px;
+    color: #666;
+}
+
+#webcrumbs .transaction-category {
+    color: #666;
+    font-size: 14px;
+    margin-right: 15px;
+}
+
+#webcrumbs .transaction-value {
+    font-weight: 600;
+    text-align: right;
+    min-width: 90px;
+}
+
+#webcrumbs .transaction-value.positive {
+    color: #00cc88;
+}
+
+#webcrumbs .transaction-value.negative {
+    color: #ff3b30;
+}
+
+/* Add Transaction Button */
+#webcrumbs .mx-5.my-4.bg-gradient-to-r {
+    background: linear-gradient(to right, #3b82f6, #34d399);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#webcrumbs .mx-5.my-4.bg-gradient-to-r:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress Bar */
+#webcrumbs .bg-teal-900.bg-opacity-30 {
+    background-color: rgba(19, 78, 74, 0.3);
+}
+
+#webcrumbs .h-2 {
+    height: 8px;
+}
+
+#webcrumbs .rounded-full {
+    border-radius: 9999px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #webcrumbs .sidebar {
+        display: none;
+    }
+    
+    #webcrumbs .main-content-with-sidebar {
+        margin-left: 0;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#webcrumbs .mx-5.my-4.bg-gradient-to-r:hover .fa-plus {
+    animation: pulse 1.5s infinite;
+}
+
+/* Text Styles */
+#webcrumbs .text-white {
+    color: #fff;
+}
+
+#webcrumbs .text-teal-900 {
+    color: #134e4a;
+}
+
+#webcrumbs .font-medium {
+    font-weight: 500;
+}
+
+#webcrumbs .font-semibold {
+    font-weight: 600;
+}
+
+#webcrumbs .font-bold {
+    font-weight: 700;
+}
+
+/* Spacing */
+#webcrumbs .p-4 {
+    padding: 16px;
+}
+
+#webcrumbs .px-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#webcrumbs .py-2 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#webcrumbs .mb-2 {
+    margin-bottom: 8px;
+}
+
+#webcrumbs .mt-3 {
+    margin-top: 12px;
+}
+
+/* Flexbox */
+#webcrumbs .flex {
+    display: flex;
+}
+
+#webcrumbs .items-center {
+    align-items: center;
+}
+
+#webcrumbs .justify-between {
+    justify-content: space-between;
+}
+
+/* Grid */
+#webcrumbs .grid {
+    display: grid;
+}
+
+#webcrumbs .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#webcrumbs .gap-4 {
+    gap: 16px;
+}
+
+/* Utilities */
+#webcrumbs .w-full {
+    width: 100%;
+}
+
+#webcrumbs .h-full {
+    height: 100%;
+}
+
+#webcrumbs .min-h-screen {
+    min-height: 100vh;
+}
+
+#webcrumbs .overflow-hidden {
+    overflow: hidden;
+}
+
+#webcrumbs .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Transitions */
+#webcrumbs .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#webcrumbs .transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#webcrumbs .transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Form Controls */
+#webcrumbs input,
+#webcrumbs select,
+#webcrumbs textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-width: 1px;
+    border-color: #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    transition: all 0.15s ease-in-out;
+}
+
+#webcrumbs input:focus,
+#webcrumbs select:focus,
+#webcrumbs textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Modern Card Styles */
+#webcrumbs .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+#webcrumbs .border-opacity-20 {
+    --tw-border-opacity: 0.2;
+}
+
+#webcrumbs .bg-opacity-15 {
+    --tw-bg-opacity: 0.15;
+}
+
+#webcrumbs .bg-opacity-30 {
+    --tw-bg-opacity: 0.3;
+}
+
+#webcrumbs .shadow-inner {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Card hover effects */
+#webcrumbs .bg-white.bg-opacity-15 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#webcrumbs .bg-white.bg-opacity-15:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Progress bar animation */
+@keyframes pulse-opacity {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+#webcrumbs #progress-bar {
+    animation: pulse-opacity 2s infinite;
+    transition: width 1s ease-in-out;
+}
+
+/* Highlighted values styling */
+#webcrumbs .tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+#webcrumbs .drop-shadow-md {
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+
+/* Add shine effect to value numbers */
+@keyframes shine {
+    0% {
+        background-position: -100px;
+    }
+    40%, 100% {
+        background-position: 300px;
+    }
+}
+
+#webcrumbs #total-balance,
+#webcrumbs #total-expenses {
+    position: relative;
+    overflow: hidden;
+}
+
+#webcrumbs #total-balance::after,
+#webcrumbs #total-expenses::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0) 100%);
+    background-size: 200px 100%;
+    animation: shine 3s infinite linear;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    #webcrumbs .main-content-with-sidebar {
+        padding: 10px;
+    }
+    #webcrumbs .bg-white.mx-5.my-4, #webcrumbs .mx-5.my-4.bg-gradient-to-r {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #webcrumbs .main-content-with-sidebar {
+        padding: 2px;
+    }
+    #webcrumbs .bg-white.mx-5.my-4, #webcrumbs .mx-5.my-4.bg-gradient-to-r {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 14px;
+    }
+    #webcrumbs .grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    #webcrumbs h1, #webcrumbs #total-balance, #webcrumbs #total-expenses, #webcrumbs #balance-total {
+        font-size: 2rem;
+    }
+}
+
+/* Modern Glassmorphism Card */
+#webcrumbs .glass-card {
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 18px;
+    border: 1.5px solid rgba(255,255,255,0.22);
+    padding: 28px 22px 22px 22px;
+    margin-bottom: 0;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+#webcrumbs .glass-card:hover {
+    box-shadow: 0 12px 32px 0 rgba(31,38,135,0.18);
+    transform: translateY(-2px) scale(1.02);
+}
+
+#webcrumbs .icon-bg {
+    background: linear-gradient(135deg, #3b82f6 60%, #34d399 100%);
+    color: #fff;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-right: 16px;
+    box-shadow: 0 2px 8px rgba(52,211,153,0.10);
+    transition: background 0.3s;
+}
+#webcrumbs .icon-bg.add {
+    background: linear-gradient(135deg, #3b82f6 60%, #34d399 100%);
+    font-size: 24px;
+}
+
+#webcrumbs .modern-title {
+    color: #fff;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0;
+    padding-left: 6px;
+}
+#webcrumbs .modern-header {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    box-shadow: 0 2px 8px rgba(17,94,89,0.08);
+}
+
+#webcrumbs .modern-balance-section {
+    margin-bottom: 18px;
+}
+#webcrumbs .modern-label {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+#webcrumbs .modern-balance {
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 8px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+#webcrumbs .modern-balance.expense {
+    color: #3b82f6;
+}
+
+#webcrumbs .modern-progress-bar-bg {
+    background: rgba(19,78,74,0.18);
+    height: 6px;
+    border-radius: 999px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06) inset;
+}
+#webcrumbs .modern-progress-bar {
+    background: #3b82f6;
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.7s cubic-bezier(.4,0,.2,1);
+}
+#webcrumbs .modern-progress-label {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.92;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#webcrumbs .modern-progress-bar-bg + .flex {
+    justify-content: center !important;
+    gap: 32px;
+}
+
+#webcrumbs .modern-balance-card {
+    background: #fff;
+    margin: 32px 32px 0 32px;
+    padding: 28px 0 18px 0;
+    border-radius: 22px;
+    box-shadow: 0 4px 18px -2px rgba(52,211,153,0.10);
+    text-align: center;
+}
+#webcrumbs .modern-balance-title {
+    color: #134e4a;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+#webcrumbs .modern-balance-value {
+    color: #134e4a;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+#webcrumbs .modern-add-transaction {
+    margin: 32px 32px 0 32px;
+    border-radius: 22px;
+    box-shadow: 0 4px 18px -2px rgba(59,130,246,0.10);
+    overflow: hidden;
+    background: linear-gradient(90deg, #3b82f6 0%, #34d399 100%);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+#webcrumbs .modern-add-transaction:hover {
+    box-shadow: 0 10px 24px -4px rgba(59,130,246,0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+#webcrumbs .modern-add-btn {
+    display: block;
+    padding: 22px 28px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+}
+#webcrumbs .modern-add-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #059669 100%);
+    color: #fff;
+}
+#webcrumbs .modern-add-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+#webcrumbs .modern-add-desc {
+    font-size: 0.98rem;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+#webcrumbs .modern-transactions-list {
+    margin: 36px 32px 0 32px;
+    padding-bottom: 32px;
+}
+#webcrumbs .transaction-item {
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 2px 8px rgba(59,130,246,0.06);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+#webcrumbs .transaction-item:hover {
+    box-shadow: 0 6px 18px rgba(59,130,246,0.13);
+    transform: translateY(-2px) scale(1.01);
+}
+#webcrumbs .transaction-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3b82f6 60%, #34d399 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    margin-right: 18px;
+    box-shadow: 0 2px 8px rgba(52,211,153,0.10);
+}
+#webcrumbs .transaction-title {
+    font-weight: 700;
+    font-size: 1.13rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+#webcrumbs .transaction-date {
+    font-size: 0.98rem;
+    color: #6b7280;
+}
+#webcrumbs .transaction-category {
+    color: #2563eb;
+    font-size: 1.01rem;
+    margin-right: 18px;
+    font-weight: 500;
+}
+#webcrumbs .transaction-value {
+    font-weight: 700;
+    text-align: right;
+    min-width: 100px;
+    font-size: 1.18rem;
+    letter-spacing: -0.5px;
+}
+#webcrumbs .transaction-value.positive {
+    color: #10b981;
+}
+#webcrumbs .transaction-value.negative {
+    color: #ef4444;
+}
+
+/* Responsividade para os novos elementos */
+@media (max-width: 1024px) {
+    #webcrumbs .modern-balance-card,
+    #webcrumbs .modern-add-transaction,
+    #webcrumbs .modern-transactions-list {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+@media (max-width: 600px) {
+    #webcrumbs .modern-balance-card,
+    #webcrumbs .modern-add-transaction,
+    #webcrumbs .modern-transactions-list {
+        margin-left: 2px;
+        margin-right: 2px;
+        border-radius: 14px;
+    }
+    #webcrumbs .glass-card {
+        padding: 18px 10px 14px 10px;
+    }
+    #webcrumbs .modern-title {
+        font-size: 1.3rem;
+    }
+    #webcrumbs .modern-balance {
+        font-size: 1.3rem;
+    }
+    #webcrumbs .modern-balance-value {
+        font-size: 1.3rem;
+    }
+    #webcrumbs .transaction-title {
+        font-size: 1rem;
+    }
+    #webcrumbs .transaction-value {
+        font-size: 1rem;
+    }
+}

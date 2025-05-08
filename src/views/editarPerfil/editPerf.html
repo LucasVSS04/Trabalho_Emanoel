@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - E-Cofre</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-editPerf.css">
+
+    <!-- Scripts globais -->
+    <script src="/src/scripts/theme-manager.js"></script>
+    <style>
+        body{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <!-- Header -->
+        <header class="profile-header">
+            <button id="back-btn" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="header-title">Perfil</h1>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="profile-content">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf7pGQYIraoWVbSfz8mhvAd9xJKlE2AuvTew&s" alt="Foto de perfil" class="profile-image">
+                <div class="camera-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+
+            <!-- User Information -->
+            <div class="user-info">
+                <h2 class="user-name">Carregando...</h2>
+                <p class="user-id">ID: ...</p>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="profile-form" class="profile-form">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome completo">
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="seuemail@exemplo.com">
+                </div>
+
+                <!-- Update Button -->
+                <button type="submit" class="update-button">Atualizar Perfil</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="/src/controllers/editPerf-controller.js"></script>
+</body>
+
+</html>

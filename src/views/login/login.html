@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Seu CSS -->
+    <link rel="stylesheet" href="style-login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Bem Vindo</h2>
+        <form>
+            <div class="input-group">
+                <label for="username">Email</label>
+                <div class="input-row">
+                    <img src="/src/assets/User.png" class="icon-fixed" alt="Usuário">
+                    <input type="text" id="username" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <div class="input-row">
+                    <img src="/src/assets/Lock.png" class="icon-fixed" alt="Cadeado">
+                    <input type="password" id="password" placeholder="Senha">
+                    <i class="fas fa-eye eye-icon" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <a href="#" class="forgot" id="forgot-btn">Esqueci Minha Senha</a>
+
+            <a class="login-btn" id="login-bton">Log In</a>
+
+            <div class="register-option">
+                <p>Não tem uma conta? <a href="#" class="register-link" id="register-btn">Cadastrar</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/src/controllers/login-controller.js"></script>
+</body>
+</html>

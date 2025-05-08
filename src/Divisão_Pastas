@@ -1,0 +1,47 @@
+Essa é a demonstração do cada pasta e arquivo do projeto, com uma breve descrição de cada um.
+(NÃO LEVE EM CONTA A ORDEM DAQUI, É APENAS PARA EXEMPLO, O QUE IMPORTA É COMO ESTÁ NO PROJETO)
+
+# Estrutura de Pastas do Projeto
+src/
+├── controllers/        # Lógica de controle: responde a ações do usuário
+│   ├── loginController.js
+│   ├── cadastroController.js
+│   └── dashboardController.js
+│
+├── services/           # Regras de negócio
+│   ├── loginService.js
+│   ├── cadastroService.js
+│   └── dashboardService.js
+│
+├── repositories/       # Comunicação com dados (ex: localStorage, API, banco)
+│   ├── userRepository.js
+│   └── notificacaoRepository.js
+│
+├── views/              # Interface com o usuário
+│   ├── login/
+│   │   ├── login.html
+│   │   ├── style-login.css
+│   │   └── login.js (apenas para DOM e eventos)
+│   │
+│   ├── cadastro/
+│   │   ├── cadastro.html
+│   │   ├── cadastro.css
+│   │   └── cadastro.js
+│   │
+│   ├── home/
+│   │   ├── dia/
+│   │   │   ├── tela_dashboard_dia.html
+│   │   │   ├── style_dia.css
+│   │   │   └── dia.js
+│   │   ├── mes/
+│   │   ├── semana/
+│   │
+│   ├── notificacao/
+│   ├── pin/
+│   └── recuperacao-senha/
+│
+├── assets/             # Imagens e ícones
+│   ├── Lock.png
+│   └── User.png
+│
+└── index.html          # Ponto de entrada (pode ser uma tela inicial ou roteador)
