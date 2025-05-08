@@ -155,38 +155,38 @@
     flex: 1;
     padding: 40px;
     background-color: #e6fff2;
-  }
-  
-  .saldo-boxes {
+}
+
+.saldo-boxes {
     display: flex;
     gap: 30px;
     margin-bottom: 30px;
     flex-wrap: wrap;
-  }
-  
-  .saldo, .despesas {
+}
+
+.saldo, .despesas {
     background-color: #fff;
     padding: 20px;
     border-radius: 16px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex: 1;
     min-width: 200px;
-  }
-  
-  .saldo h2, .despesas h2 {
+}
+
+.saldo h2, .despesas h2 {
     margin-top: 10px;
     font-size: 24px;
-  }
-  
-  .filtros {
+}
+
+.filtros {
     margin-bottom: 20px;
-  }
-  
-  .transacoes li {
+}
+
+.transacoes li {
     margin-bottom: 10px;
-  }
-  
-  .box-resumo {
+}
+
+.box-resumo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,58 +197,58 @@
   gap: 30px;
   flex-wrap: wrap;
   position: relative;
-  }
-  
-  .texto-resumo {
+}
+
+.texto-resumo {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 50px;
   flex-wrap: wrap;
   text-align: center;
-  }
-  
-  .texto-resumo p {
+}
+
+.texto-resumo p {
   margin: 0;
   font-size: 14px;
-  }
-  
-  
-  .texto-resumo strong {
+}
+
+
+.texto-resumo strong {
   display: block;
   margin-top: 4px;
   font-size: 16px;
-  }
-  
-  .negativo {
+}
+
+.negativo {
   color: red;
-  }
-  
-  .metas-info {
+}
+
+.metas-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 30px;
-  }
-  
-  
-  .titulo-metas {
+}
+
+
+.titulo-metas {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
-  }
-  
-  .espaco {
+}
+
+.espaco {
   margin-top: 20px;
-  }
+}
   
-  .botoes-periodo {
+.botoes-periodo {
   display: flex;
   gap: 10px;
   padding-left: 10px;
-  }
-  
-  .botoes-periodo button {
+}
+
+.botoes-periodo button {
   padding: 8px 15px;
   border: none;
   border-radius: 8px;
@@ -256,155 +256,158 @@
   color: #333;
   cursor: pointer;
   font-weight: bold;
-  }
-  
-  .botoes-periodo .ativo {
+}
+
+.botoes-periodo .ativo {
   background-color: #00cc88;
   color: white;
-  }
-  
-  .user-info {
-      margin-bottom: 20px;
-      color: #fff;
-      font-size: 16px;
-      position: relative;
-      padding-right: 45px;
-  }
-  
-  .icone-sino {
-      position: absolute;
-      top: 5px;
-      right: 0;
-      font-size: 20px;
-      color: #ffffff;
-      cursor: pointer;
-      margin-right: 15px;
-  }
-  
-  .icone-sino:hover {
-      color: #00cc88;
-  }
-  
-  .notificacao {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: red;
-  color: white;
-  border-radius: 50%;
-  font-size: 10px;
-  padding: 2px 6px;
-  }
-  
-  /* Responsivo para tablets (até 1024px) */
-  @media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .sidebar {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    padding: 20px 10px;
-  }
-  
-  .sidebar nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .dashboard,
-  .main-content {
-    padding: 20px;
-  }
-  
-  .saldo-boxes {
-    flex-direction: column;
-  }
-  
-  .metas {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-  
-  .box-resumo {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .texto-resumo {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .icone-sino {
-    right: 20px;
-    top: 10px;
-    font-size: 18px;
-  }
-  }
-  
-  /* Responsivo para celulares (até 600px) */
-  @media (max-width: 600px) {
-  .sidebar h2,
-  .sub {
-    display: none;
-  }
-  
-  .sidebar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .sidebar button {
-    font-size: 14px;
-    padding: 6px 10px;
-  }
-  
-  .summary h1 {
-    font-size: 24px;
-  }
-  
-  .metas h2 {
-    font-size: 20px;
-  }
-  
-  .saldo,
-  .despesas {
-    padding: 15px;
-    font-size: 14px;
-  }
-  
-  .transacao {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .botoes-periodo {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-left: 0;
-  }
-  
-  .icone-sino {
-    top: 8px;
-    right: 10px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+    color: #fff;
     font-size: 16px;
+    position: relative;
+    padding-right: 45px;
+}
+
+.icone-sino {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.icone-sino:hover {
+    color: #00cc88;
+}
+
+/* ============================
+   Responsividade para Tablets
+   ============================ */
+   @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .sidebar {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 10px;
+    }
+  
+    .sidebar nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  
+    .dashboard,
+    .main-content {
+      padding: 20px;
+    }
+  
+    .saldo-boxes {
+      flex-direction: column;
+    }
+  
+    .metas {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .box-resumo {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .texto-resumo {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .icone-sino {
+      right: 20px;
+      top: 10px;
+      font-size: 18px;
+    }
   }
   
-  .notificacao {
-    font-size: 8px;
-    padding: 2px 4px;
+  /* ============================
+     Responsividade para Celulares
+     ============================ */
+  @media (max-width: 600px) {
+    .sidebar h2,
+    .sub {
+      display: none;
+    }
+  
+    .sidebar {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+  
+    .sidebar button {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  
+    .summary h1 {
+      font-size: 24px;
+    }
+  
+    .metas h2 {
+      font-size: 20px;
+    }
+  
+    .saldo,
+    .despesas {
+      padding: 15px;
+      font-size: 14px;
+    }
+  
+    .transacao {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .botoes-periodo {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: 0;
+    }
+  
+    .icone-sino {
+      top: 8px;
+      right: 10px;
+      font-size: 16px;
+    }
   }
-  }
+
+  .transaction-icon {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.transaction-icon img {
+    width: 100%
+}
   

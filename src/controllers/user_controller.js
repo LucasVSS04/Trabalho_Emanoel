@@ -6,6 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const configBtn = document.getElementById("config-btn");
   const securityBtn = document.getElementById("security-btn");
   const editProfileCard = document.querySelector(".option-card:nth-child(1)"); // First option card is Edit Profile
+  const analiseBtn = document.getElementById('analise');
+
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    console.error("Usuário não autenticado");
+    // Redirecionar para a página de login se não houver token
+    window.location.href = "/src/views/login/login.html";
+    return;
+  }
 
   document.body.style.display = "block";
 
@@ -53,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       home: "/src/views/home/dia/tela_dashboard_dia.html",
       transaction: "/src/views/transaction/transaction.html",
       user: "/src/views/user/user.html",
-      analytics: "/src/views/analytics/analytics.html",
+      analytics: "/src/views/analise/analise.html",
     };
 
     Object.entries(pages).forEach(([id, path]) => {
@@ -136,6 +146,12 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           window.location.href = "/src/views/login/login.html";
         }
+      });
+    }
+
+    if (analiseBtn) {
+      analiseBtn.addEventListener('click', () => {
+        window.location.href = '/src/views/analise/analise.html';
       });
     }
   }

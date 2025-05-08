@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 // Middleware para verificar JWT
 const authenticateToken = (req, res, next) => {
@@ -17,6 +17,25 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+// Obter detalhes do usuário atual
+router.get("/me", authenticateToken, async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT id, nome, email, tipo FROM usuario WHERE id = $1",
+      [req.user.id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Usuário não encontrado" });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("Erro ao buscar dados do usuário:", err);
+    res.status(500).json({ error: "Erro interno do servidor" });
+  }
+});
 
 // Obter transações de um usuário
 router.get("/transacoes/usuario/:id", authenticateToken, async (req, res) => {
@@ -242,44 +261,56 @@ router.patch("/usuarios/:id", authenticateToken, async (req, res) => {
 });
 
 // Endpoint para alterar senha do usuário
-router.patch('/usuarios/:id/change-password', authenticateToken, async (req, res) => {
-  const userId = parseInt(req.params.id);
-  const { senhaAtual, novaSenha } = req.body;
+router.patch(
+  "/usuarios/:id/change-password",
+  authenticateToken,
+  async (req, res) => {
+    const userId = parseInt(req.params.id);
+    const { senhaAtual, novaSenha } = req.body;
 
-  if (!senhaAtual || !novaSenha) {
-    return res.status(400).json({ error: 'Senha atual e nova senha são obrigatórias' });
-  }
-
-  try {
-    // Buscar usuário
-    const userResult = await pool.query('SELECT * FROM usuario WHERE id = $1', [userId]);
-    if (userResult.rows.length === 0) {
-      return res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-    const user = userResult.rows[0];
-
-    // Verificar senha atual
-    const senhaCorreta = await bcrypt.compare(senhaAtual, user.senha);
-    if (!senhaCorreta) {
-      return res.status(400).json({ error: 'senha_incorreta' });
+    if (!senhaAtual || !novaSenha) {
+      return res
+        .status(400)
+        .json({ error: "Senha atual e nova senha são obrigatórias" });
     }
 
-    // Atualizar senha
-    const hashedPassword = await bcrypt.hash(novaSenha, 10);
-    await pool.query('UPDATE usuario SET senha = $1 WHERE id = $2', [hashedPassword, userId]);
+    try {
+      // Buscar usuário
+      const userResult = await pool.query(
+        "SELECT * FROM usuario WHERE id = $1",
+        [userId]
+      );
+      if (userResult.rows.length === 0) {
+        return res.status(404).json({ error: "Usuário não encontrado" });
+      }
+      const user = userResult.rows[0];
 
-    // Gerar novo token (opcional)
-    const token = jwt.sign(
-      { id: user.id, email: user.email, nome: user.nome, tipo: user.tipo },
-      'segredo_super_secreto',
-      { expiresIn: '1h' }
-    );
+      // Verificar senha atual
+      const senhaCorreta = await bcrypt.compare(senhaAtual, user.senha);
+      if (!senhaCorreta) {
+        return res.status(400).json({ error: "senha_incorreta" });
+      }
 
-    res.json({ message: 'Senha alterada com sucesso', token });
-  } catch (err) {
-    console.error('Erro ao alterar senha:', err);
-    res.status(500).json({ error: 'Erro interno do servidor' });
+      // Atualizar senha
+      const hashedPassword = await bcrypt.hash(novaSenha, 10);
+      await pool.query("UPDATE usuario SET senha = $1 WHERE id = $2", [
+        hashedPassword,
+        userId,
+      ]);
+
+      // Gerar novo token (opcional)
+      const token = jwt.sign(
+        { id: user.id, email: user.email, nome: user.nome, tipo: user.tipo },
+        "segredo_super_secreto",
+        { expiresIn: "1h" }
+      );
+
+      res.json({ message: "Senha alterada com sucesso", token });
+    } catch (err) {
+      console.error("Erro ao alterar senha:", err);
+      res.status(500).json({ error: "Erro interno do servidor" });
+    }
   }
-});
+);
 
 module.exports = router;

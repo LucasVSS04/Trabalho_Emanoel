@@ -64,12 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event Listeners
   if (backBtn) {
     backBtn.addEventListener("click", function () {
-      // Usa o gerenciador de transições para voltar de forma fluida
-      if (window.pageTransitions) {
-        window.pageTransitions.goBack();
-      } else {
         window.history.back();
-      }
     });
   }
 
@@ -121,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/usuarios/${userData.id}/change-password`,
+        `http://localhost:3000/api/usuarios/${userData.id}`,
         {
           method: "PATCH",
           headers: {

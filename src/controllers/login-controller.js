@@ -61,14 +61,14 @@ document.getElementById("login-bton").addEventListener("click", async () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, senha }),
-      credentials: 'include'
     });
-    
+
     const data = await res.json();
     if (res.ok) {
       sessionStorage.setItem("token", data.token);
       alert("Login realizado com sucesso!");
       
+      // Navegar para a próxima página com transição
       if (window.pageTransitions) {
         window.pageTransitions.navigateTo("../pin/confirmacao-pin.html", "flip");
       } else {

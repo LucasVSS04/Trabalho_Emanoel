@@ -1,43 +1,57 @@
 const express = require('express');
-const session = require('express-session');
 const cors = require('cors');
-const cookieParser = require('cookie-parser')
-const path = require('path');
+const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/auth');
 const usersRouters = require('./routes/users');
 const transacaoRoutes = require('./routes/transacao');
-const criarTabelas = require('./createTables'); // importa a criação das tabelas
+const usuarioRoutes = require('./routes/usuario');
+const path = require('path');
+
+console.log('Iniciando aplicação Express...');
 
 const app = express();
+
+// Configuração do CORS
 app.use(cors({
-    origin: true,  // permite qualquer origem
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
+  origin: ['http://localhost:5502', 'http://127.0.0.1:5502', 'http://localhost:5503'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+console.log('CORS configurado.');
+
+// Configuração do cookie-parser
 app.use(cookieParser());
+console.log('Cookie-parser configurado.');
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Registrando rotas
+console.log('Registrando rotas da API...');
 app.use('/api', authRoutes);
 app.use('/api', usersRouters);
-app.use('/api', transacaoRoutes);
+app.use('/api/transacoes', transacaoRoutes);
+app.use('/api/usuario', usuarioRoutes);
+console.log('Rotas da API registradas.');
 
-const PORT = process.env.PORT || 3000;
-
-async function startServer() {
-    try {
-        console.log('Iniciando criação das tabelas...');
-        await criarTabelas();
-        app.listen(PORT, () => {
-            console.log(`✅ Servidor rodando na porta ${PORT}`);
-        });
-    } catch (error) {
-        console.error('❌ Erro ao iniciar o servidor:', error);
-    }
-}
-
-app.use((req, res, next) => {
-    res.status(404).json({ erro: 'Rota não encontrada' });
+// Rota de teste direta
+app.get('/teste', (req, res) => {
+  res.json({ message: 'O servidor está funcionando!' });
 });
 
-startServer();
+// Rota de diagnóstico
+app.get('/api/diagnostico', (req, res) => {
+  res.json({ 
+    status: 'online', 
+    message: 'Servidor está operacional',
+    timestamp: new Date().toISOString()
+  });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Acesse: http://localhost:${PORT}`);
+});

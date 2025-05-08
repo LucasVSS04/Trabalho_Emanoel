@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Painel Financeiro</title>
-    <link rel="stylesheet" href="style_dia.css" />
+    <link rel="stylesheet" href="../style_home.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -22,17 +22,22 @@
           <div class="icone-sino" id="notificacao">
             <i class="fas fa-bell"></i>
           </div>
-          <p><strong>Oi, </strong><br />Boa Tarde</p>
+          <p><strong id="nomeUsuario">Usuário</strong><br />Boa Tarde</p>
         </div>
         <nav class="menu">
-          <button class="active" id="home">
+          <button
+            class="nav-button"
+            onclick="window.location.href='tela_dashboard_dia.html'"
+          >
             <i class="fas fa-home"></i> Início
           </button>
           <button id="transaction">
             <i class="fas fa-exchange-alt"></i> Transações
           </button>
-          <button id="user"><i class="fas fa-user"></i> Usuário</button>
-          <button id="anallise">
+          <button class="nav-button" id="btn-usuario">
+            <i class="fas fa-user"></i> Usuário
+          </button>
+          <button class="nav-button" id="btn-analise">
             <i class="fas fa-chart-line"></i> Análise
           </button>
         </nav>
@@ -42,11 +47,11 @@
         <div class="saldo-boxes">
           <div class="saldo">
             <p>Saldo Total</p>
-            <h2>R$7.783,00</h2>
+            <h2 id="saldo-total">R$00,00</h2>
           </div>
           <div class="despesas">
             <p>Despesas Totais</p>
-            <h2>-R$1.187,40</h2>
+            <h2 id="despesas-totais">-R$00,40</h2>
           </div>
         </div>
 
@@ -57,12 +62,12 @@
           </div>
           <div class="texto-resumo">
             <div class="receita">
-              <p>Receita Semana Passada</p>
-              <strong class="positivo">R$4.000,00</strong>
+              <p>Receita do dia</p>
+              <strong id="receita-dia" class="positivo">R$0,00</strong>
             </div>
-            <div class="comida">
-              <p>Comida da semana passada</p>
-              <strong class="negativo">-R$100,00</strong>
+            <div class="despesa">
+              <p>Despesas do dia</p>
+              <strong id="despesa-dia" class="negativo">-R$0,00</strong>
             </div>
           </div>
         </div>
@@ -75,67 +80,200 @@
           <button href="#" class="botao" data-periodo="mes">Mês</button>
         </div>
 
-        <ul class="transacoes">
-          <li class="transacao">
-            <i class="fas fa-wallet"></i>
-            <div>
-              <strong>Salário</strong>
-              <p>18:27 - 20:31</p>
-            </div>
-            <span class="positivo">R$4.000,00</span>
-          </li>
-          <li class="transacao">
-            <i class="fas fa-store"></i>
-            <div>
-              <strong>Mercado</strong>
-              <p>17:00 - 22:00</p>
-            </div>
-            <span class="negativo">-R$100,00</span>
-          </li>
-          <li class="transacao">
-            <i class="fas fa-home"></i>
-            <div>
-              <strong>Aluguel</strong>
-              <p>8:30 - 11:45</p>
-            </div>
-            <span class="negativo">-R$674,40</span>
-          </li>
-        </ul>
+        <ul class="transacoes" id="lista-transacoes"></ul>
       </main>
     </div>
-    <script src="/src/controllers/home-controller.js"></script>
+    <script src="../../../controllers/home-controller.js"></script>
+    <script src="/src/scripts/sidebar.js"></script>
     <script>
-      function parseJwt(token) {
-        try {
-          const base64Url = token.split(".")[1];
-          const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-          const jsonPayload = decodeURIComponent(
-            atob(base64)
-              .split("")
-              .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-              .join("")
-          );
-          return JSON.parse(jsonPayload);
-        } catch (e) {
-          return null;
-        }
+      const transactionBtn = document.getElementById("transaction");
+      if (transactionBtn) {
+        transactionBtn.addEventListener("click", function () {
+          window.location.href = "/src/views/Transacao/Transacao.html";
+        });
       }
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM carregado");
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const token = sessionStorage.getItem("token"); // ou localStorage
+        const token = sessionStorage.getItem("token");
         if (!token) {
-          window.location.href = "/src/views/login/login.html"; // Redireciona para a página de login
+          console.error("Token não encontrado");
+          window.location.href = "/src/views/login/login.html";
           return;
         }
-        const payload = parseJwt(token);
-
-        const nome = payload?.nome || "Usuário";
-        const userInfo = document.querySelector(".user-info p");
-
-        if (userInfo) {
-          userInfo.innerHTML = `<strong>Oi, ${nome}</strong><br>Boa Tarde`;
-        }
         document.body.style.display = "block";
+
+        fetch("http://localhost:3000/api/me", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro na autenticação");
+            }
+            return response.json();
+          })
+          .then((usuarioLogado) => {
+            if (usuarioLogado.error) {
+              console.error(
+                "Erro ao obter os dados do usuário:",
+                usuarioLogado.error
+              );
+              return;
+            }
+
+            const nomeUsuario = usuarioLogado.nome;
+            const userInfoElement = document.querySelector(".user-info p");
+            if (nomeUsuario && userInfoElement) {
+              userInfoElement.innerHTML = `<strong>Oi, ${nomeUsuario}</strong><br>Boa Tarde`;
+            }
+
+            const usuarioId = usuarioLogado.id;
+
+            // Buscar Receita e Despesa do dia
+            fetch(`http://localhost:3000/api/transacoes/dia/${usuarioId}`, {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                return response.json();
+              })
+              .then((data) => {
+                if (data.error) {
+                  console.error("Erro ao carregar dados do dia:", data.error);
+                  return;
+                }
+
+                const { receitaDoDia, despesasDoDia, transacoes } = data;
+                document.getElementById("receita-dia").textContent =
+                  `R$${(receitaDoDia || 0).toFixed(2)}`;
+                document.getElementById("despesa-dia").textContent =
+                  `-R$${Math.abs(despesasDoDia || 0).toFixed(2)}`;
+
+                // Exibir lista de transações
+                const listaTransacoes =
+                  document.getElementById("lista-transacoes");
+                listaTransacoes.innerHTML = "";
+
+                if (!transacoes || transacoes.length === 0) {
+                  const mensagem = document.createElement("li");
+                  mensagem.textContent = "Sem transações hoje.";
+                  mensagem.style.textAlign = "center";
+                  mensagem.style.padding = "2rem";
+                  mensagem.style.color = "#666";
+                  mensagem.style.width = "100%";
+                  mensagem.style.listStyle = "none";
+                  listaTransacoes.appendChild(mensagem);
+                } else {
+                  transacoes.forEach((transacao) => {
+                    const li = document.createElement("li");
+                    li.classList.add("transacao");
+
+                    const iconeDiv = document.createElement("div");
+                    iconeDiv.className = `transaction-icon ${transacao.categoria}`;
+
+                    const img = document.createElement("img");
+                    img.src = `../../../assets/icons/${transacao.categoria}-icon.png`;
+                    img.alt = transacao.categoria;
+                    img.onerror = function () {
+                      this.onerror = null;
+                      this.src = "../../../assets/icons/mercado-icon.png"; // ícone padrão
+                    };
+
+                    iconeDiv.appendChild(img);
+
+                    const divInfo = document.createElement("div");
+                    const titulo = document.createElement("strong");
+                    titulo.textContent =
+                      transacao.descricao || transacao.categoria;
+                    const data = document.createElement("p");
+
+                    // Alteração aqui: formatando para mostrar a data completa como na visualização mensal
+                    // E também adicionando a hora para ter informação mais detalhada
+                    const dataObj = new Date(transacao.data);
+                    const dataFormatada = dataObj.toLocaleDateString("pt-BR");
+
+                    data.textContent = `${dataFormatada} `;
+
+                    divInfo.appendChild(titulo);
+                    divInfo.appendChild(data);
+
+                    const valorSpan = document.createElement("span");
+                    valorSpan.className =
+                      transacao.valor < 0 ? "negativo" : "positivo";
+                    valorSpan.textContent = `R$${Math.abs(transacao.valor).toFixed(2)}`;
+
+                    li.appendChild(iconeDiv);
+                    li.appendChild(divInfo);
+                    li.appendChild(valorSpan);
+                    listaTransacoes.appendChild(li);
+                  });
+                }
+
+                // Buscar Resumo Geral
+                fetch(
+                  `http://localhost:3000/api/transacoes/resumo-geral/${usuarioId}`,
+                  {
+                    method: "GET",
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  }
+                )
+                  .then((response) => response.json())
+                  .then((data) => {
+                    if (data.error) {
+                      console.error(
+                        "Erro ao carregar resumo geral:",
+                        data.error
+                      );
+                      return;
+                    }
+
+                    const { saldoTotal, despesasTotais } = data;
+
+                    document.getElementById("saldo-total").textContent =
+                      `R$${(saldoTotal || 0).toFixed(2)}`;
+                    document.getElementById("despesas-totais").textContent =
+                      `-R$${Math.abs(despesasTotais || 0).toFixed(2)}`;
+                  })
+                  .catch((error) => {
+                    console.error("Erro ao carregar resumo geral:", error);
+                  });
+              })
+              .catch((error) => {
+                console.error("Erro ao carregar dados do dia:", error);
+              });
+          })
+          .catch((error) => {
+            console.error("Erro ao obter os dados do usuário:", error);
+            window.location.href = "/src/views/login/login.html";
+          });
+
+        const btnAnalise = document.getElementById("btn-analise");
+        if (btnAnalise) {
+          if (window.location.pathname.includes("analise.html")) {
+            btnAnalise.disabled = true;
+            btnAnalise.style.cursor = "default";
+          } else {
+            btnAnalise.addEventListener("click", () => {
+              window.location.href = "/src/views/analise/analise.html";
+            });
+          }
+        }
+
+        document
+          .getElementById("btn-usuario")
+          ?.addEventListener("click", () => {
+            window.location.href = "/src/views/user/user.html";
+          });
       });
     </script>
   </body>

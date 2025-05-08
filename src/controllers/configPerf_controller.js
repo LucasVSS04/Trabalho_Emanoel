@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   backBtn.addEventListener("click", function () {
-    window.location.href = "/src/views/user/user.html";
+    window.history.back();
   });
   // Função para inicializar as configurações
   function initSettings() {
@@ -82,12 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event Listeners
   if (backBtn) {
     backBtn.addEventListener("click", function () {
-      // Usa o gerenciador de transições para voltar de forma fluida
-      if (window.pageTransitions) {
-        window.pageTransitions.goBack();
-      } else {
         window.history.back();
-      }
     });
   }
 
@@ -142,12 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (closeBtn) {
     closeBtn.addEventListener("click", function () {
       if (window.confirm("Deseja realmente sair?")) {
-        // Usa transição para voltar à página inicial
-        if (window.pageTransitions) {
-          window.pageTransitions.navigateTo("../../index.html", "fade");
-        } else {
           window.location.href = "../../index.html";
-        }
       }
     });
   }
@@ -292,11 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Usa transição personalizada para voltar à página inicial após deletar a conta
           setTimeout(() => {
-            if (window.pageTransitions) {
-              window.pageTransitions.navigateTo("../../index.html", "fade");
-            } else {
               window.location.href = "../../index.html";
-            }
           }, 1500);
         } else {
           document.getElementById("confirm-delete").disabled = false;

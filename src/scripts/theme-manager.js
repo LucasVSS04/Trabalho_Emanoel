@@ -7,12 +7,12 @@ window.themeManager = {
   toggleDarkMode: function(enable) {
     if (enable) {
       document.documentElement.classList.add('dark-theme');
-      document.body.classList.add('dark-theme');
+      if (document.body) document.body.classList.add('dark-theme');
       localStorage.setItem('darkMode', 'enabled');
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark-theme');
-      document.body.classList.remove('dark-theme');
+      if (document.body) document.body.classList.remove('dark-theme');
       localStorage.setItem('darkMode', 'disabled');
       localStorage.setItem('theme', 'light');
     }
@@ -29,11 +29,11 @@ window.themeManager = {
   toggleHighContrast: function(enable) {
     if (enable) {
       document.documentElement.classList.add('high-contrast');
-      document.body.classList.add('high-contrast');
+      if (document.body) document.body.classList.add('high-contrast');
       localStorage.setItem('highContrast', 'true');
     } else {
       document.documentElement.classList.remove('high-contrast');
-      document.body.classList.remove('high-contrast');
+      if (document.body) document.body.classList.remove('high-contrast');
       localStorage.setItem('highContrast', 'false');
     }
     
@@ -107,17 +107,49 @@ window.themeManager = {
     const isDark = this.isDarkMode();
     const isHighContrast = this.isHighContrast();
     
+    // Verificar se o documento e os elementos estão prontos
+    if (document.documentElement) {
     if (isDark) {
       document.documentElement.classList.add('dark-theme');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+      }
+      
+      if (isHighContrast) {
+        document.documentElement.classList.add('high-contrast');
+      } else {
+        document.documentElement.classList.remove('high-contrast');
+      }
+    }
+    
+    // Adicionar as classes ao body apenas se ele existir
+    if (document.body) {
+      if (isDark) {
       document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.remove('dark-theme');
+      }
+      
+      if (isHighContrast) {
+        document.body.classList.add('high-contrast');
+      } else {
+        document.body.classList.remove('high-contrast');
+      }
     } else {
-      document.documentElement.classList.remove('dark-theme');
+      // Se o body ainda não existir, aguardar até que esteja disponível
+      document.addEventListener('DOMContentLoaded', () => {
+        if (isDark) {
+          document.body.classList.add('dark-theme');
+        } else {
       document.body.classList.remove('dark-theme');
     }
     
     if (isHighContrast) {
-      document.documentElement.classList.add('high-contrast');
       document.body.classList.add('high-contrast');
+        } else {
+          document.body.classList.remove('high-contrast');
+        }
+      });
     }
     
     // Adicionar detector de alterações de tema de outras abas
@@ -126,18 +158,18 @@ window.themeManager = {
       themeChannel.onmessage = (event) => {
         if (event.data.isDark) {
           document.documentElement.classList.add('dark-theme');
-          document.body.classList.add('dark-theme');
+          if (document.body) document.body.classList.add('dark-theme');
         } else {
           document.documentElement.classList.remove('dark-theme');
-          document.body.classList.remove('dark-theme');
+          if (document.body) document.body.classList.remove('dark-theme');
         }
         
         if (event.data.highContrast) {
           document.documentElement.classList.add('high-contrast');
-          document.body.classList.add('high-contrast');
+          if (document.body) document.body.classList.add('high-contrast');
         } else {
           document.documentElement.classList.remove('high-contrast');
-          document.body.classList.remove('high-contrast');
+          if (document.body) document.body.classList.remove('high-contrast');
         }
       };
     }
