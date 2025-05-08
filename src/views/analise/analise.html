@@ -4,87 +4,39 @@
     <meta charset="UTF-8">
     <title>Análises Financeiras</title>
     <link rel="stylesheet" href="../../styles/analise.css">
-    <link rel="stylesheet" href="../../styles/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        .main-content-analise {
-            display: flex;
-        }
-        .sidebar {
-            min-height: 100vh;
-        }
-        .container-analise {
-            margin: 40px auto;
-            flex: 1;
-        }
-    </style>
 </head>
 <body>
-    <div class="main-content-analise">
-        <!-- Sidebar -->
-        <!--#include file="../../components/sidebar.html" -->
-        <aside class="sidebar">
-            <div class="user-info">
-                <div class="user-details">
-                    <h3 id="nomeUsuario"></h3>
-                    <p id="saudacao"></p>
-                </div>
-                <div class="notification-icon">
-                    <i class="fas fa-bell"></i>
+    <div class="container-analise">
+        <div class="tabs">
+            <button class="tab-btn ativo" data-periodo="dia">Diario</button>
+            <button class="tab-btn" data-periodo="semana">Semanal</button>
+            <button class="tab-btn" data-periodo="mes">Mensal</button>
+            <button class="tab-btn" data-periodo="ano">Anual</button>
+        </div>
+        <div class="analise-box">
+            <div class="analise-header">
+                <h2>Renda & Despesas</h2>
+                <div class="analise-actions">
+                    <button id="zoom-btn"><i class="fas fa-search"></i></button>
+                    <button id="calendar-btn"><i class="fas fa-calendar-alt"></i></button>
                 </div>
             </div>
-            <nav class="sidebar-nav">
-                <button class="nav-button" id="btn-inicio">
-                    <i class="fas fa-home"></i>
-                    <span>Inicio</span>
-                </button>
-                <button class="nav-button" id="btn-transacoes">
-                    <i class="fas fa-exchange-alt"></i>
-                    <span>Transações</span>
-                </button>
-                <button class="nav-button" id="btn-usuario">
-                    <i class="fas fa-user"></i>
-                    <span>Usuário</span>
-                </button>
-                <button class="nav-button active" id="btn-analise">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Análise</span>
-                </button>
-            </nav>
-        </aside>
-        <!-- Conteúdo da análise -->
-        <div class="container-analise">
-            <div class="tabs">
-                <button class="tab-btn ativo" data-periodo="dia">Diario</button>
-                <button class="tab-btn" data-periodo="semana">Semanal</button>
-                <button class="tab-btn" data-periodo="mes">Mensal</button>
-                <button class="tab-btn" data-periodo="ano">Anual</button>
+            <canvas id="grafico-analise" height="180"></canvas>
+        </div>
+        <div class="analise-totais">
+            <div class="analise-renda">
+                <i class="fas fa-arrow-up"></i>
+                <span>Renda</span>
+                <strong id="total-renda">R$0,00</strong>
             </div>
-            <div class="analise-box">
-                <div class="analise-header">
-                    <h2>Renda & Despesas</h2>
-                    <div class="analise-actions">
-                        <button id="zoom-btn"><i class="fas fa-search"></i></button>
-                        <button id="calendar-btn"><i class="fas fa-calendar-alt"></i></button>
-                    </div>
-                </div>
-                <canvas id="grafico-analise" height="180"></canvas>
-            </div>
-            <div class="analise-totais">
-                <div class="analise-renda">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>Renda</span>
-                    <strong id="total-renda">R$0,00</strong>
-                </div>
-                <div class="analise-despesas">
-                    <i class="fas fa-arrow-down"></i>
-                    <span>Despesas</span>
-                    <strong id="total-despesas">R$0,00</strong>
-                </div>
+            <div class="analise-despesas">
+                <i class="fas fa-arrow-down"></i>
+                <span>Despesas</span>
+                <strong id="total-despesas">R$0,00</strong>
             </div>
         </div>
     </div>
-    <script src="../../scripts/sidebar.js"></script>
     <script src="../../scripts/analise.js"></script>
 </body>
 </html> 

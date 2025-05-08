@@ -32,7 +32,7 @@
             <i class="fas fa-exchange-alt"></i> Transações
           </button>
           <button id="user"><i class="fas fa-user"></i> Usuário</button>
-          <button id="analise">
+          <button id="anallise">
             <i class="fas fa-chart-line"></i> Análise
           </button>
         </nav>
@@ -81,17 +81,6 @@
     <script src="../../../controllers/home-controller.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const btnAnalise = document.getElementById("analise");
-        if (btnAnalise) {
-          if (window.location.pathname.includes("analise.html")) {
-            btnAnalise.disabled = true;
-            btnAnalise.style.cursor = "default";
-          } else {
-            btnAnalise.addEventListener("click", () => {
-              window.location.href = "/src/views/analise/analise.html";
-            });
-          }
-        }
         console.log("DOM carregado");
 
         const token = sessionStorage.getItem("token");

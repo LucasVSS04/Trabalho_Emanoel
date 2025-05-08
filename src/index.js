@@ -43,8 +43,8 @@ app.get('/teste', (req, res) => {
 
 // Rota de diagnóstico
 app.get('/api/diagnostico', (req, res) => {
-  res.json({ 
-    status: 'online', 
+  res.json({
+    status: 'online',
     message: 'Servidor está operacional',
     timestamp: new Date().toISOString()
   });
