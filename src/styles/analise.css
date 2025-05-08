@@ -1,0 +1,113 @@
+body {
+    background: #f6fff8;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container-analise {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #e6fff2;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 28px 24px 28px;
+}
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.tab-btn {
+    background: #e6fff2;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 28px;
+    font-size: 1.1rem;
+    color: #222;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.tab-btn.ativo, .tab-btn:hover {
+    background: #00cc88;
+    color: #fff;
+}
+.analise-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 18px 18px 18px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.analise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.analise-header h2 {
+    font-size: 1.2rem;
+    color: #222;
+    margin: 0;
+}
+.analise-actions button {
+    background: #e6fff2;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+    font-size: 1.1rem;
+    color: #00cc88;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.analise-actions button:hover {
+    background: #00cc88;
+    color: #fff;
+}
+.analise-totais {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 18px;
+    gap: 30px;
+}
+.analise-renda, .analise-despesas {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 28px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+}
+.analise-renda i {
+    color: #00cc88;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+.analise-despesas i {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+.analise-renda span, .analise-despesas span {
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 4px;
+}
+.analise-renda strong, .analise-despesas strong {
+    font-size: 1.3rem;
+    color: #222;
+    margin-top: 2px;
+}
+@media (max-width: 700px) {
+    .container-analise {
+        padding: 12px 2vw 12px 2vw;
+    }
+    .analise-totais {
+        flex-direction: column;
+        gap: 18px;
+    }
+} 

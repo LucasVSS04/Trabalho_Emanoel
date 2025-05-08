@@ -1,0 +1,261 @@
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #f0fff0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%; /* atualizado */
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: none; /* atualizado */
+  border: none;     /* atualizado */
+  padding: 20px;    /* atualizado */
+}
+
+.cadastro-container {
+  background-color: #f0fff0;
+  position: relative;
+}
+
+/* Barra de título e controles de janela */
+.header-bar {
+  width: 100%;
+  background-color: #000000;
+  display: none; /* atualizado */
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.back-button {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.window-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.window-controls span {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Título de cadastro */
+.cadastro-title {
+  color: #000000;
+  font-size: 28px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+/* Formulário de cadastro */
+.cadastro-form {
+  padding: 0 30px 30px;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 800px; /* atualizado */
+}
+
+/* Grupos de input */
+.input-group {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Ajuste para espaço entre o label e o input */
+}
+
+.input-group label {
+  width: 180px;
+  text-align: right;
+  margin-right: 15px;
+  color: #2d4d39;
+  font-weight: normal;
+}
+
+/* Container do input */
+.input-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #cccccc;
+  border-radius: 25px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Input de formulário */
+.form-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Toggle de visibilidade da senha */
+.toggle-password {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  background: none;
+  border: none;
+}
+
+/* Botão de confirmar */
+.confirmar-btn {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #00c986;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.confirmar-btn:hover {
+  background-color: #00c986;
+  text-decoration: none;
+}
+
+/* Estiliza o ícone do calendário para ser clicável */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 1;
+  display: block;
+  color: inherit;
+  pointer-events: auto;
+}
+
+/* Estilo para a data formatada */
+#data-formatada {
+  font-size: 0.9em;
+  color: #333;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Ícone de olho para senha */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .cadastro-form {
+      padding: 0 20px 30px;
+  }
+
+  .input-group {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .input-group label {
+      width: 100%;
+      text-align: left;
+      margin: 0 0 8px 0;
+  }
+
+  .input-container {
+      width: 100%;
+  }
+
+  .confirmar-btn {
+      font-size: 15px;
+      padding: 10px 0;
+  }
+
+  .cadastro-title {
+      font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cadastro-form {
+      padding: 0 15px 20px;
+  }
+
+  .container {
+      padding: 15px;
+  }
+
+  .cadastro-title {
+      font-size: 20px;
+      margin: 20px 0;
+  }
+
+  .form-input {
+      font-size: 15px;
+  }
+
+  .confirmar-btn {
+      font-size: 14px;
+      padding: 10px 0;
+  }
+
+  .toggle-password,
+  .eye-icon {
+      font-size: 14px;
+  }
+}
+
+/* Ajuste para telas muito pequenas (menor que 380px) */
+@media (max-width: 380px) {
+  .cadastro-title {
+      font-size: 18px;
+      margin: 15px 0;
+  }
+
+  .form-input {
+      font-size: 14px;
+      padding: 7px 10px;
+  }
+
+  .confirmar-btn {
+      font-size: 13px;
+      padding: 9px 0;
+  }
+
+  .eye-icon {
+      font-size: 13px;
+      right: 10px;
+  }
+
+  .input-group {
+      margin-bottom: 12px;
+      gap: 6px;
+  }
+
+  .input-container {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .input-group label {
+      text-align: left;
+  }
+}
