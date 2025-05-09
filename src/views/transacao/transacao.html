@@ -72,7 +72,7 @@
                     <div class="icon-bg">
                       <i class="fas fa-wallet"></i>
                     </div>
-                    <span class="modern-label">Receitas Totais</span>
+                    <span class="modern-label">Entradas Totais</span>
                   </div>
                   <h1 class="modern-balance" id="total-balance">R$0,00</h1>
                 </div>
@@ -276,6 +276,15 @@
           }
 
           const data2 = await response2.json();
+          
+          // Calcular a soma de todas as transações com valores positivos
+          const somaPositivos = data2
+            .filter(transaction => transaction.valor > 0)
+            .reduce((sum, transaction) => sum + transaction.valor, 0);
+          
+          // Atualizar o elemento total-balance com a soma dos valores positivos
+          document.getElementById("total-balance").textContent = formatCurrency(somaPositivos || 0);
+          
           renderTransactions(data2 || []);
         } catch (error) {
           console.error("Erro ao carregar dados:", error);

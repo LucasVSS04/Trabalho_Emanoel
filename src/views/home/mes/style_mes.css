@@ -407,3 +407,52 @@
     padding: 2px 4px;
   }
 }
+
+/* Balance Card Styles */
+.modern-balance-card {
+  background: #fff;
+  margin: 20px 0;
+  padding: 28px 0 18px 0;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px -2px rgba(52,211,153,0.10);
+  text-align: center;
+}
+
+.modern-balance-title {
+  color: #134e4a;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.modern-balance-value {
+  color: #134e4a;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* Responsive Styles for Balance Card */
+@media (max-width: 1024px) {
+  .modern-balance-card {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modern-balance-card {
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 14px;
+  }
+  
+  .modern-balance-title {
+    font-size: 1.1rem;
+  }
+  
+  .modern-balance-value {
+    font-size: 1.3rem;
+  }
+}

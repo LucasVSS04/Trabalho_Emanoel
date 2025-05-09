@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Painel Financeiro</title>
     <link rel="stylesheet" href="../style_home.css" />
+    <link rel="stylesheet" href="style_mes.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -41,13 +42,19 @@
       <main class="main-content">
         <div class="saldo-boxes">
           <div class="saldo">
-            <p>Saldo Total</p>
+            <p>Entradas Totais</p>
             <h2 id="saldo-total">R$00,00</h2>
           </div>
           <div class="despesas">
             <p>Despesas Totais</p>
             <h2 id="despesas-totais">-R$00,40</h2>
           </div>
+        </div>
+        
+        <!-- Balance Card -->
+        <div class="modern-balance-card">
+          <h3 class="modern-balance-title">Balanço Total</h3>
+          <p class="modern-balance-value" id="balance-total">R$0,00</p>
         </div>
 
         <div class="box box-resumo">
@@ -231,11 +238,14 @@
                     }
 
                     const { saldoTotal, despesasTotais } = data;
+                    const balancoTotal = saldoTotal + despesasTotais;
 
                     document.getElementById("saldo-total").textContent =
                       `R$${(saldoTotal || 0).toFixed(2)}`;
                     document.getElementById("despesas-totais").textContent =
                       `-R$${Math.abs(despesasTotais || 0).toFixed(2)}`;
+                    document.getElementById("balance-total").textContent =
+                      `R$${(balancoTotal || 0).toFixed(2)}`;
 
                     document.body.style.display = "block";
                   })

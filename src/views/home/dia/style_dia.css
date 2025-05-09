@@ -197,6 +197,7 @@
   gap: 30px;
   flex-wrap: wrap;
   position: relative;
+  margin-top: 20px;
 }
 
 .texto-resumo {
@@ -283,6 +284,91 @@
 
 .icone-sino:hover {
     color: #00cc88;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.modern-progress-bar-bg {
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.modern-progress-bar {
+  background: linear-gradient(90deg, #3b82f6 0%, #34d399 100%);
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+  animation: pulse-opacity 2s infinite;
+}
+
+.modern-progress-label {
+  color: #134e4a;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+/* Balance Card Styles */
+.modern-balance-card {
+  background: #fff;
+  margin: 20px 0;
+  padding: 28px 0 18px 0;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px -2px rgba(52,211,153,0.10);
+  text-align: center;
+}
+
+.modern-balance-title {
+  color: #134e4a;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.modern-balance-value {
+  color: #134e4a;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+@keyframes pulse-opacity {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 
 /* ============================

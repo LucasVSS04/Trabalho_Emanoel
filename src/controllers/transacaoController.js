@@ -62,7 +62,7 @@ class TransacaoController {
       const despesasTotais = valores
         .filter((v) => v < 0)
         .reduce((acc, v) => acc + v, 0);
-      const saldoTotal = receitasTotais + despesasTotais;
+      const saldoTotal = receitasTotais;
 
       return res.status(200).json({
         transacoesRecentes: transacoesRecentesQuery.rows,
@@ -241,7 +241,7 @@ class TransacaoController {
       const despesasTotais = transacoes
         .filter((t) => t.valor < 0)
         .reduce((acc, t) => acc + t.valor, 0);
-      const saldoTotal = receitasTotais + despesasTotais;
+      const saldoTotal = receitasTotais;
 
       return res.status(200).json({
         saldoTotal,
