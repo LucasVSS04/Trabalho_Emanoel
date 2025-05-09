@@ -94,7 +94,9 @@ class TransacaoController {
         .filter((t) => t.valor < 0)
         .reduce((acc, t) => acc + t.valor, 0);
 
-      const saldoTotal = receitasTotais + despesasTotais;
+      const saldoTotal = transacoes
+        .reduce((acc, t) => acc + t.valor, 0);
+
       const balancoTotal = saldoTotal;
 
       return res.status(200).json({
