@@ -6,7 +6,7 @@
 }
 
 .sidebar {
-    width: 280px;
+    width: 190px;
     background-color: var(--sidebar-bg);
     padding: 1rem;
     color: var(--sidebar-text);
