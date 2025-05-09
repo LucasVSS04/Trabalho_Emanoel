@@ -1,6 +1,6 @@
 :root {
     --sidebar-bg: #1a1a1a;
-    --sidebar-hover: #2c2c2c;
+    --sidebar-hover: #00cc88;
     --sidebar-text: #ffffff;
     --active-green: #00cc88;
 }
@@ -10,6 +10,11 @@
     background-color: var(--sidebar-bg);
     padding: 1rem;
     color: var(--sidebar-text);
+}
+
+.sidebar:hover {
+    width: 220px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .user-info {
@@ -34,6 +39,12 @@
 .notification-icon i {
     color: #ffffff !important;
     font-size: 1.2rem;
+}
+
+.notification-icon:hover i,
+.icone-sino:hover i,
+.icone-sino:hover {
+    color: #00cc88 !important;
 }
 
 .user-details h3 {
@@ -64,7 +75,7 @@
     cursor: pointer;
     color: var(--sidebar-text);
     border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-button i {
@@ -79,10 +90,12 @@
 }
 
 .nav-button:hover {
-    background-color: #2c2c2c !important;
+    background-color: var(--sidebar-hover) !important;
+    color: #fff;
 }
 
 /* Classes para botões ativos em diferentes páginas */
 .nav-button.active {
-    background-color: #2c2c2c !important;
+    background-color: var(--sidebar-hover) !important;
+    color: #fff;
 } 
